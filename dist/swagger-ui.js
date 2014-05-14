@@ -1,4 +1,5 @@
 // swagger-ui.js
+
 $(function() {
 
 	// Helper function for vertically aligning DOM elements
@@ -2178,20 +2179,35 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     OperationView.prototype.handleFileUpload = function(map, form) {
+<<<<<<< HEAD
       var bodyParam, el, headerParams, o, obj, param, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3,
         _this = this;
       log("it's a file upload");
       _ref = form.serializeArray();
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         o = _ref[_i];
+=======
+      var bodyParam, el, headerParams, o, obj, param, params, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref5, _ref6, _ref7, _ref8,
+        _this = this;
+      _ref5 = form.serializeArray();
+      for (_i = 0, _len = _ref5.length; _i < _len; _i++) {
+        o = _ref5[_i];
+>>>>>>> fix for upload with no files
         if ((o.value != null) && jQuery.trim(o.value).length > 0) {
           map[o.name] = o.value;
         }
       }
       bodyParam = new FormData();
+<<<<<<< HEAD
       _ref1 = this.model.parameters;
       for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
         param = _ref1[_j];
+=======
+      params = 0;
+      _ref6 = this.model.parameters;
+      for (_j = 0, _len1 = _ref6.length; _j < _len1; _j++) {
+        param = _ref6[_j];
+>>>>>>> fix for upload with no files
         if (param.paramType === 'form') {
           if (map[param.name] !== void 0) {
             bodyParam.append(param.name, map[param.name]);
@@ -2207,10 +2223,20 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         }
       }
       log(headerParams);
+<<<<<<< HEAD
       _ref3 = form.find('input[type~="file"]');
       for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
         el = _ref3[_l];
         bodyParam.append($(el).attr('name'), el.files[0]);
+=======
+      _ref8 = form.find('input[type~="file"]');
+      for (_l = 0, _len3 = _ref8.length; _l < _len3; _l++) {
+        el = _ref8[_l];
+        if (typeof el.files[0] !== 'undefined') {
+          bodyParam.append($(el).attr('name'), el.files[0]);
+          params += 1;
+        }
+>>>>>>> fix for upload with no files
       }
       log(bodyParam);
       this.invocationUrl = this.model.supportHeaderParams() ? (headerParams = this.model.getHeaderParams(map), this.model.urlify(map, false)) : this.model.urlify(map, true);
@@ -2235,6 +2261,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       };
       if (window.authorizations) {
         window.authorizations.apply(obj);
+      }
+      if (params === 0) {
+        obj.data.append("fake", "true");
       }
       jQuery.ajax(obj);
       return false;
