@@ -1,5 +1,5 @@
 // swagger-ui.js
-// version 2.0.18
+// version 2.0.19
 $(function() {
 
 	// Helper function for vertically aligning DOM elements
@@ -474,6 +474,7 @@ function program8(depth0,data) {
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 <<<<<<< HEAD
+<<<<<<< HEAD
 templates['object'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -605,6 +606,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+=======
+>>>>>>> updated versions
 templates['operation'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
