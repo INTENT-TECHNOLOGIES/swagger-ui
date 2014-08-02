@@ -68,7 +68,7 @@ log = function(){
   log.history = log.history || [];
   log.history.push(arguments);
   if(this.console){
-    console.log( Array.prototype.slice.call(arguments) );
+    console.log( Array.prototype.slice.call(arguments)[0] );
   }
 };
 
@@ -473,6 +473,7 @@ function program8(depth0,data) {
 
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+<<<<<<< HEAD
 templates['object'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -585,6 +586,19 @@ function program1(depth0,data) {
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "-set\">create object</a>\n</div>";
+=======
+templates['oauth_view'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class='auth_button' id='oauth_button'><img class='auth_icon' alt='apply api key' src='images/oauth.jpeg'></div>\n<div class='auth_container' id='oauth_container'>\n  <div class='key_input_container'>\n    <div class='auth_label'>";
+  if (stack1 = helpers.keyName) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.keyName; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</div>\n    <div class='auth_submit'><a class='auth_submit_button' id=\"apply_basic_auth\" href=\"#\">apply</a></div>\n  </div>\n</div>\n";
+>>>>>>> rebuilt
   return buffer;
   });
 })();
@@ -839,7 +853,7 @@ function program9(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n		";
-  stack1 = helpers['if'].call(depth0, depth0.defaultValue, {hash:{},inverse:self.program(12, program12, data),fn:self.program(10, program10, data),data:data});
+  stack1 = helpers['if'].call(depth0, depth0.isFile, {hash:{},inverse:self.program(10, program10, data),fn:self.program(2, program2, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n	";
   return buffer;
@@ -847,7 +861,16 @@ function program9(depth0,data) {
 function program10(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n			<input class='parameter' minlength='0' name='";
+  buffer += "\n			";
+  stack1 = helpers['if'].call(depth0, depth0.defaultValue, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n		";
+  return buffer;
+  }
+function program11(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n				<input class='parameter' minlength='0' name='";
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -855,18 +878,18 @@ function program10(depth0,data) {
   if (stack1 = helpers.defaultValue) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.defaultValue; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "'/>\n		";
+    + "'/>\n			";
   return buffer;
   }
 
-function program12(depth0,data) {
+function program13(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n			<input class='parameter' minlength='0' name='";
+  buffer += "\n				<input class='parameter' minlength='0' name='";
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "' placeholder='' type='text' value=''/>\n		";
+    + "' placeholder='' type='text' value=''/>\n			";
   return buffer;
   }
 
@@ -1735,7 +1758,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       this.showMessage('Finished Loading Resource Information. Rendering Swagger UI...');
       this.mainView = new MainView({
         model: this.api,
-        el: $('#' + this.dom_id)
+        el: $('#' + this.dom_id),
+        swaggerOptions: this.options
       }).render();
       this.showMessage();
       switch (this.options.docExpansion) {
@@ -1853,6 +1877,10 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   MainView = (function(_super) {
+<<<<<<< HEAD
+=======
+    var sorters;
+>>>>>>> rebuilt
 
     __extends(MainView, _super);
 
@@ -1860,7 +1888,33 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       MainView.__super__.constructor.apply(this, arguments);
     }
 
-    MainView.prototype.initialize = function() {};
+    sorters = {
+      'alpha': function(a, b) {
+        return a.path.localeCompare(b.path);
+      },
+      'method': function(a, b) {
+        return a.method.localeCompare(b.method);
+      }
+    };
+
+    MainView.prototype.initialize = function(opts) {
+      var route, sorter, sorterName, _i, _len, _ref3;
+      if (opts == null) {
+        opts = {};
+      }
+      if (opts.swaggerOptions.sorter) {
+        sorterName = opts.swaggerOptions.sorter;
+        sorter = sorters[sorterName];
+        _ref3 = this.model.apisArray;
+        for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
+          route = _ref3[_i];
+          route.operationsArray.sort(sorter);
+        }
+        if (sorterName === "alpha") {
+          return this.model.apisArray.sort(sorter);
+        }
+      }
+    };
 
     MainView.prototype.render = function() {
       var counter, id, resource, resources, _i, _len, _ref;
@@ -1974,8 +2028,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     OperationView.prototype.mouseEnter = function(e) {
       var elem, hgh, pos, scMaxX, scMaxY, scX, scY, wd, x, y;
       elem = $(e.currentTarget.parentNode).find('#api_information_panel');
-      x = event.pageX;
-      y = event.pageY;
+      x = e.pageX;
+      y = e.pageY;
       scX = $(window).scrollLeft();
       scY = $(window).scrollTop();
       scMaxX = scX + $(window).width();
@@ -2220,7 +2274,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         param = _ref1[_j];
 >>>>>>> remove petstore stuff & customize webapp for Intent usecase - DIST
         if (param.paramType === 'form') {
-          if (map[param.name] !== void 0) {
+          if (param.type.toLowerCase() !== 'file' && map[param.name] !== void 0) {
             bodyParam.append(param.name, map[param.name]);
           }
         }
@@ -2255,7 +2309,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         }
 >>>>>>> fix for upload with no files
       }
-      log(bodyParam);
       this.invocationUrl = this.model.supportHeaderParams() ? (headerParams = this.model.getHeaderParams(map), this.model.urlify(map, false)) : this.model.urlify(map, true);
       $(".request_url", $(this.el)).html("<pre>" + this.invocationUrl + "</pre>");
       obj = {
