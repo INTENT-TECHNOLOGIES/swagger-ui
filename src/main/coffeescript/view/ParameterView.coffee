@@ -6,11 +6,12 @@ class ParameterView extends Backbone.View
           opts.fn(@)
         else
           opts.inverse(@)
-          
+
   render: ->
     type = @model.type || @model.dataType
     @model.isBody = true if @model.paramType == 'body'
     @model.isFile = true if type.toLowerCase() == 'file'
+    @model.isNumber = true if type.toLowerCase() in ['integer', 'long', 'float', 'double']
 
     template = @template()
     $(@el).html(template(@model))
