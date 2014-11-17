@@ -15,7 +15,6 @@
 			{{/if}}
 		{{/if}}
 	{{else}}
-<<<<<<< HEAD
 		{{#if isFile}}
 			<input type="file" name='{{name}}'/>
 			<div class="parameter-content-type" />
@@ -25,12 +24,6 @@
 			{{else}}
 				<input class='parameter' minlength='0' name='{{name}}' placeholder='' type='text' value=''/>
 			{{/if}}
-=======
-		{{#if defaultValue}}
-      <input class='parameter' minlength='0' name='{{name}}' placeholder='' type='{{#if isNumber}}number{{else}}text{{/if}}' value='{{defaultValue}}'/>
-		{{else}}
-      <input class='parameter' minlength='0' name='{{name}}' placeholder='' type='{{#if isNumber}}number{{else}}text{{/if}}' value=''/>
->>>>>>> use number type for number input
 		{{/if}}
 	{{/if}}
 

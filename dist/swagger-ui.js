@@ -473,8 +473,6 @@ function program8(depth0,data) {
 
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-<<<<<<< HEAD
-<<<<<<< HEAD
 templates['object'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -587,27 +585,12 @@ function program1(depth0,data) {
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "-set\">create object</a>\n</div>";
-=======
-templates['oauth_view'] = template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
-
-
-  buffer += "<div class='auth_button' id='oauth_button'><img class='auth_icon' alt='apply api key' src='images/oauth.jpeg'></div>\n<div class='auth_container' id='oauth_container'>\n  <div class='key_input_container'>\n    <div class='auth_label'>";
-  if (stack1 = helpers.keyName) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.keyName; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1)
-    + "</div>\n    <div class='auth_submit'><a class='auth_submit_button' id=\"apply_basic_auth\" href=\"#\">apply</a></div>\n  </div>\n</div>\n";
->>>>>>> rebuilt
   return buffer;
   });
 })();
 
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-=======
->>>>>>> updated versions
 templates['operation'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -856,11 +839,7 @@ function program9(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n		";
-<<<<<<< HEAD
-  stack1 = helpers['if'].call(depth0, depth0.isFile, {hash:{},inverse:self.program(10, program10, data),fn:self.program(2, program2, data),data:data});
-=======
-  stack1 = helpers['if'].call(depth0, depth0.defaultValue, {hash:{},inverse:self.program(15, program15, data),fn:self.program(10, program10, data),data:data});
->>>>>>> use number type for number input
+  stack1 = helpers['if'].call(depth0, depth0.isFile, {hash:{},inverse:self.program(12, program12, data),fn:self.program(10, program10, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n	";
   return buffer;
@@ -868,41 +847,39 @@ function program9(depth0,data) {
 function program10(depth0,data) {
   
   var buffer = "", stack1;
-<<<<<<< HEAD
+  buffer += "\n			<input type=\"file\" name='";
+  if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "'/>\n			<div class=\"parameter-content-type\" />\n		";
+  return buffer;
+  }
+
+function program12(depth0,data) {
+  
+  var buffer = "", stack1;
   buffer += "\n			";
-  stack1 = helpers['if'].call(depth0, depth0.defaultValue, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data),data:data});
+  stack1 = helpers['if'].call(depth0, depth0.defaultValue, {hash:{},inverse:self.program(15, program15, data),fn:self.program(13, program13, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n		";
   return buffer;
   }
-function program11(depth0,data) {
+function program13(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n				<input class='parameter' minlength='0' name='";
-=======
-  buffer += "\n      <input class='parameter' minlength='0' name='";
->>>>>>> use number type for number input
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "' placeholder='' type='";
-  stack1 = helpers['if'].call(depth0, depth0.isNumber, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "' value='";
+    + "' placeholder='' type='text' value='";
   if (stack1 = helpers.defaultValue) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.defaultValue; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "'/>\n			";
   return buffer;
   }
-function program11(depth0,data) {
-  
-  
-  return "number";
-  }
 
-function program13(depth0,data) {
-<<<<<<< HEAD
+function program15(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n				<input class='parameter' minlength='0' name='";
@@ -910,24 +887,6 @@ function program13(depth0,data) {
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "' placeholder='' type='text' value=''/>\n			";
-=======
-  
-  
-  return "text";
-  }
-
-function program15(depth0,data) {
-  
-  var buffer = "", stack1;
-  buffer += "\n      <input class='parameter' minlength='0' name='";
-  if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1)
-    + "' placeholder='' type='";
-  stack1 = helpers['if'].call(depth0, depth0.isNumber, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "' value=''/>\n		";
->>>>>>> use number type for number input
   return buffer;
   }
 
@@ -1704,30 +1663,26 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (stack1 = helpers.message) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.message; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</td>\n<td width='50%'><span class=\"model-signature\" /></td>";
+  buffer += "</td>\n<td width='50%'><span class=\"model-signature\"></span></td>\n";
   return buffer;
   });
 })();
 
 
 
-// Generated by CoffeeScript 1.5.0
+// Generated by CoffeeScript 1.6.3
 (function() {
-<<<<<<< HEAD
-  var ContentTypeView, DocumentArrayView, DocumentObjectView, DocumentPropertyView, DocumentView, HeaderView, MainView, OperationView, ParameterContentTypeView, ParameterView, ResourceView, ResponseContentTypeView, SignatureView, StatusCodeView, SwaggerUi,
-=======
-  var ContentTypeView, HeaderView, MainView, OperationView, ParameterContentTypeView, ParameterView, ResourceView, ResponseContentTypeView, SignatureView, StatusCodeView, SwaggerUi,
->>>>>>> remove petstore stuff & customize webapp for Intent usecase - DIST
+  var ContentTypeView, DocumentArrayView, DocumentObjectView, DocumentPropertyView, DocumentView, HeaderView, MainView, OperationView, ParameterContentTypeView, ParameterView, ResourceView, ResponseContentTypeView, SignatureView, StatusCodeView, SwaggerUi, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   SwaggerUi = (function(_super) {
-
     __extends(SwaggerUi, _super);
 
     function SwaggerUi() {
-      SwaggerUi.__super__.constructor.apply(this, arguments);
+      _ref = SwaggerUi.__super__.constructor.apply(this, arguments);
+      return _ref;
     }
 
     SwaggerUi.prototype.dom_id = "swagger_ui";
@@ -1776,9 +1731,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     SwaggerUi.prototype.load = function() {
-      var url, _ref;
-      if ((_ref = this.mainView) != null) {
-        _ref.clear();
+      var url, _ref1;
+      if ((_ref1 = this.mainView) != null) {
+        _ref1.clear();
       }
       url = this.options.url;
       if (url.indexOf("http") !== 0) {
@@ -1868,11 +1823,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   window.SwaggerUi = SwaggerUi;
 
   HeaderView = (function(_super) {
-
     __extends(HeaderView, _super);
 
     function HeaderView() {
-      HeaderView.__super__.constructor.apply(this, arguments);
+      _ref1 = HeaderView.__super__.constructor.apply(this, arguments);
+      return _ref1;
     }
 
     HeaderView.prototype.events = {
@@ -1915,15 +1870,13 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   MainView = (function(_super) {
-<<<<<<< HEAD
-=======
     var sorters;
->>>>>>> rebuilt
 
     __extends(MainView, _super);
 
     function MainView() {
-      MainView.__super__.constructor.apply(this, arguments);
+      _ref2 = MainView.__super__.constructor.apply(this, arguments);
+      return _ref2;
     }
 
     sorters = {
@@ -1955,13 +1908,13 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     MainView.prototype.render = function() {
-      var counter, id, resource, resources, _i, _len, _ref;
+      var counter, id, resource, resources, _i, _len, _ref3;
       $(this.el).html(Handlebars.templates.main(this.model));
       resources = {};
       counter = 0;
-      _ref = this.model.apisArray;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        resource = _ref[_i];
+      _ref3 = this.model.apisArray;
+      for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
+        resource = _ref3[_i];
         id = resource.name;
         while (typeof resources[id] !== 'undefined') {
           id = id + "_" + counter;
@@ -1995,22 +1948,22 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   ResourceView = (function(_super) {
-
     __extends(ResourceView, _super);
 
     function ResourceView() {
-      ResourceView.__super__.constructor.apply(this, arguments);
+      _ref3 = ResourceView.__super__.constructor.apply(this, arguments);
+      return _ref3;
     }
 
     ResourceView.prototype.initialize = function() {};
 
     ResourceView.prototype.render = function() {
-      var counter, id, methods, operation, _i, _len, _ref;
+      var counter, id, methods, operation, _i, _len, _ref4;
       $(this.el).html(Handlebars.templates.resource(this.model));
       methods = {};
-      _ref = this.model.operationsArray;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        operation = _ref[_i];
+      _ref4 = this.model.operationsArray;
+      for (_i = 0, _len = _ref4.length; _i < _len; _i++) {
+        operation = _ref4[_i];
         counter = 0;
         id = operation.nickname;
         while (typeof methods[id] !== 'undefined') {
@@ -2043,11 +1996,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   OperationView = (function(_super) {
-
     __extends(OperationView, _super);
 
     function OperationView() {
-      OperationView.__super__.constructor.apply(this, arguments);
+      _ref4 = OperationView.__super__.constructor.apply(this, arguments);
+      return _ref4;
     }
 
     OperationView.prototype.invocationUrl = null;
@@ -2100,16 +2053,16 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     OperationView.prototype.render = function() {
-      var contentTypeModel, isMethodSubmissionSupported, k, o, param, responseContentTypeView, responseSignatureView, signatureModel, statusCode, type, v, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
+      var contentTypeModel, isMethodSubmissionSupported, k, o, param, responseContentTypeView, responseSignatureView, signatureModel, statusCode, type, v, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref5, _ref6, _ref7, _ref8;
       isMethodSubmissionSupported = true;
       if (!isMethodSubmissionSupported) {
         this.model.isReadOnly = true;
       }
       this.model.oauth = null;
       if (this.model.authorizations) {
-        _ref = this.model.authorizations;
-        for (k in _ref) {
-          v = _ref[k];
+        _ref5 = this.model.authorizations;
+        for (k in _ref5) {
+          v = _ref5[k];
           if (k === "oauth2") {
             if (this.model.oauth === null) {
               this.model.oauth = {};
@@ -2144,9 +2097,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       };
       contentTypeModel.consumes = this.model.consumes;
       contentTypeModel.produces = this.model.produces;
-      _ref1 = this.model.parameters;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        param = _ref1[_j];
+      _ref6 = this.model.parameters;
+      for (_j = 0, _len1 = _ref6.length; _j < _len1; _j++) {
+        param = _ref6[_j];
         type = param.type || param.dataType;
         if (type.toLowerCase() === 'file') {
           if (!contentTypeModel.consumes) {
@@ -2159,14 +2112,14 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         model: contentTypeModel
       });
       $('.response-content-type', $(this.el)).append(responseContentTypeView.render().el);
-      _ref2 = this.model.parameters;
-      for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-        param = _ref2[_k];
+      _ref7 = this.model.parameters;
+      for (_k = 0, _len2 = _ref7.length; _k < _len2; _k++) {
+        param = _ref7[_k];
         this.addParameter(param, contentTypeModel.consumes);
       }
-      _ref3 = this.model.responseMessages;
-      for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-        statusCode = _ref3[_l];
+      _ref8 = this.model.responseMessages;
+      for (_l = 0, _len3 = _ref8.length; _l < _len3; _l++) {
+        statusCode = _ref8[_l];
         this.addStatusCode(statusCode);
       }
       return this;
@@ -2195,7 +2148,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     OperationView.prototype.submitOperation = function(e) {
-      var error_free, form, isFileUpload, map, o, opts, val, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+      var error_free, form, isFileUpload, map, o, opts, val, _i, _j, _k, _len, _len1, _len2, _ref5, _ref6, _ref7;
       if (e != null) {
         e.preventDefault();
       }
@@ -2221,13 +2174,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
           parent: this
         };
         isFileUpload = false;
-<<<<<<< HEAD
-        _ref = form.find("input.parameter");
-=======
-        _ref = form.find("input");
->>>>>>> remove petstore stuff & customize webapp for Intent usecase - DIST
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          o = _ref[_i];
+        _ref5 = form.find("input.parameter");
+        for (_i = 0, _len = _ref5.length; _i < _len; _i++) {
+          o = _ref5[_i];
           if ((o.value != null) && jQuery.trim(o.value).length > 0) {
             map[o.name] = o.value;
           }
@@ -2235,20 +2184,16 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
             isFileUpload = true;
           }
         }
-        _ref1 = form.find("textarea");
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          o = _ref1[_j];
+        _ref6 = form.find("textarea");
+        for (_j = 0, _len1 = _ref6.length; _j < _len1; _j++) {
+          o = _ref6[_j];
           if ((o.value != null) && jQuery.trim(o.value).length > 0) {
             map["body"] = o.value;
           }
         }
-<<<<<<< HEAD
-        _ref2 = form.find("select.parameter");
-=======
-        _ref2 = form.find("select");
->>>>>>> remove petstore stuff & customize webapp for Intent usecase - DIST
-        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-          o = _ref2[_k];
+        _ref7 = form.find("select.parameter");
+        for (_k = 0, _len2 = _ref7.length; _k < _len2; _k++) {
+          o = _ref7[_k];
           val = this.getSelectedValue(o);
           if ((val != null) && jQuery.trim(val).length > 0) {
             map[o.name] = val;
@@ -2270,49 +2215,20 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     OperationView.prototype.handleFileUpload = function(map, form) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      var bodyParam, el, headerParams, o, obj, param, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3,
-        _this = this;
-      log("it's a file upload");
-      _ref = form.serializeArray();
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        o = _ref[_i];
-=======
       var bodyParam, el, headerParams, o, obj, param, params, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref5, _ref6, _ref7, _ref8,
         _this = this;
       _ref5 = form.serializeArray();
       for (_i = 0, _len = _ref5.length; _i < _len; _i++) {
         o = _ref5[_i];
->>>>>>> fix for upload with no files
-=======
-      var bodyParam, el, headerParams, o, obj, param, params, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3,
-        _this = this;
-      _ref = form.serializeArray();
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        o = _ref[_i];
->>>>>>> remove petstore stuff & customize webapp for Intent usecase - DIST
         if ((o.value != null) && jQuery.trim(o.value).length > 0) {
           map[o.name] = o.value;
         }
       }
       bodyParam = new FormData();
-<<<<<<< HEAD
-      _ref1 = this.model.parameters;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        param = _ref1[_j];
-=======
       params = 0;
-<<<<<<< HEAD
       _ref6 = this.model.parameters;
       for (_j = 0, _len1 = _ref6.length; _j < _len1; _j++) {
         param = _ref6[_j];
->>>>>>> fix for upload with no files
-=======
-      _ref1 = this.model.parameters;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        param = _ref1[_j];
->>>>>>> remove petstore stuff & customize webapp for Intent usecase - DIST
         if (param.paramType === 'form') {
           if (param.type.toLowerCase() !== 'file' && map[param.name] !== void 0) {
             bodyParam.append(param.name, map[param.name]);
@@ -2320,34 +2236,21 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         }
       }
       headerParams = {};
-      _ref2 = this.model.parameters;
-      for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-        param = _ref2[_k];
+      _ref7 = this.model.parameters;
+      for (_k = 0, _len2 = _ref7.length; _k < _len2; _k++) {
+        param = _ref7[_k];
         if (param.paramType === 'header') {
           headerParams[param.name] = map[param.name];
         }
       }
       log(headerParams);
-<<<<<<< HEAD
-<<<<<<< HEAD
-      _ref3 = form.find('input[type~="file"]');
-      for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-        el = _ref3[_l];
-        bodyParam.append($(el).attr('name'), el.files[0]);
-=======
       _ref8 = form.find('input[type~="file"]');
       for (_l = 0, _len3 = _ref8.length; _l < _len3; _l++) {
         el = _ref8[_l];
-=======
-      _ref3 = form.find('input[type~="file"]');
-      for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-        el = _ref3[_l];
->>>>>>> remove petstore stuff & customize webapp for Intent usecase - DIST
         if (typeof el.files[0] !== 'undefined') {
           bodyParam.append($(el).attr('name'), el.files[0]);
           params += 1;
         }
->>>>>>> fix for upload with no files
       }
       this.invocationUrl = this.model.supportHeaderParams() ? (headerParams = this.model.getHeaderParams(map), this.model.urlify(map, false)) : this.model.urlify(map, true);
       $(".request_url", $(this.el)).html("<pre></pre>");
@@ -2402,14 +2305,14 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     OperationView.prototype.getSelectedValue = function(select) {
-      var opt, options, _i, _len, _ref;
+      var opt, options, _i, _len, _ref5;
       if (!select.multiple) {
         return select.value;
       } else {
         options = [];
-        _ref = select.options;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          opt = _ref[_i];
+        _ref5 = select.options;
+        for (_i = 0, _len = _ref5.length; _i < _len; _i++) {
+          opt = _ref5[_i];
           if (opt.selected) {
             options.push(opt.value);
           }
@@ -2497,9 +2400,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         padding = '';
         indent += transitions[fromTo];
         padding = ((function() {
-          var _j, _ref, _results;
+          var _j, _ref5, _results;
           _results = [];
-          for (j = _j = 0, _ref = indent; 0 <= _ref ? _j < _ref : _j > _ref; j = 0 <= _ref ? ++_j : --_j) {
+          for (j = _j = 0, _ref5 = indent; 0 <= _ref5 ? _j < _ref5 : _j > _ref5; j = 0 <= _ref5 ? ++_j : --_j) {
             _results.push('  ');
           }
           return _results;
@@ -2579,11 +2482,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   StatusCodeView = (function(_super) {
-
     __extends(StatusCodeView, _super);
 
     function StatusCodeView() {
-      StatusCodeView.__super__.constructor.apply(this, arguments);
+      _ref5 = StatusCodeView.__super__.constructor.apply(this, arguments);
+      return _ref5;
     }
 
     StatusCodeView.prototype.initialize = function() {};
@@ -2618,11 +2521,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   ParameterView = (function(_super) {
-
     __extends(ParameterView, _super);
 
     function ParameterView() {
-      ParameterView.__super__.constructor.apply(this, arguments);
+      _ref6 = ParameterView.__super__.constructor.apply(this, arguments);
+      return _ref6;
     }
 
     ParameterView.prototype.initialize = function() {
@@ -2636,11 +2539,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     ParameterView.prototype.render = function() {
-<<<<<<< HEAD
-      var contentTypeModel, documentView, isParam, parameterContentTypeView, responseContentTypeView, signatureModel, signatureView, template, type, _ref, _ref1;
-=======
-      var contentTypeModel, isParam, parameterContentTypeView, responseContentTypeView, signatureModel, signatureView, template, type, _ref;
->>>>>>> use number type for number input
+      var contentTypeModel, documentView, isParam, parameterContentTypeView, responseContentTypeView, signatureModel, signatureView, template, type, _ref7, _ref8, _ref9;
       type = this.model.type || this.model.dataType;
       if (this.model.paramType === 'body') {
         this.model.isBody = true;
@@ -2648,10 +2547,12 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       if (type.toLowerCase() === 'file') {
         this.model.isFile = true;
       }
-<<<<<<< HEAD
+      if ((_ref7 = type.toLowerCase()) === 'integer' || _ref7 === 'long' || _ref7 === 'float' || _ref7 === 'double') {
+        this.model.isNumber = true;
+      }
       if (this.model.isBody && this.model.models && !this.model.isFile) {
         if (type === 'array') {
-          this.model.refDataType = ((_ref = this.model.items) != null ? _ref.$ref : void 0) || ((_ref1 = this.model.items) != null ? _ref1.type : void 0);
+          this.model.refDataType = ((_ref8 = this.model.items) != null ? _ref8.$ref : void 0) || ((_ref9 = this.model.items) != null ? _ref9.type : void 0);
         }
         this.model.refModel = this.model.models[type] || this.model.models[this.model.refDataType];
       }
@@ -2665,13 +2566,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         template = this.template();
         $(this.el).html(template(this.model));
       }
-=======
-      if ((_ref = type.toLowerCase()) === 'integer' || _ref === 'long' || _ref === 'float' || _ref === 'double') {
-        this.model.isNumber = true;
-      }
-      template = this.template();
-      $(this.el).html(template(this.model));
->>>>>>> use number type for number input
       signatureModel = {
         sampleJSON: this.model.sampleJSON,
         isParam: true,
@@ -2733,11 +2627,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   SignatureView = (function(_super) {
-
     __extends(SignatureView, _super);
 
     function SignatureView() {
-      SignatureView.__super__.constructor.apply(this, arguments);
+      _ref7 = SignatureView.__super__.constructor.apply(this, arguments);
+      return _ref7;
     }
 
     SignatureView.prototype.events = {
@@ -2802,11 +2696,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   ContentTypeView = (function(_super) {
-
     __extends(ContentTypeView, _super);
 
     function ContentTypeView() {
-      ContentTypeView.__super__.constructor.apply(this, arguments);
+      _ref8 = ContentTypeView.__super__.constructor.apply(this, arguments);
+      return _ref8;
     }
 
     ContentTypeView.prototype.initialize = function() {};
@@ -2828,11 +2722,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   ResponseContentTypeView = (function(_super) {
-
     __extends(ResponseContentTypeView, _super);
 
     function ResponseContentTypeView() {
-      ResponseContentTypeView.__super__.constructor.apply(this, arguments);
+      _ref9 = ResponseContentTypeView.__super__.constructor.apply(this, arguments);
+      return _ref9;
     }
 
     ResponseContentTypeView.prototype.initialize = function() {};
@@ -2854,11 +2748,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   ParameterContentTypeView = (function(_super) {
-
     __extends(ParameterContentTypeView, _super);
 
     function ParameterContentTypeView() {
-      ParameterContentTypeView.__super__.constructor.apply(this, arguments);
+      _ref10 = ParameterContentTypeView.__super__.constructor.apply(this, arguments);
+      return _ref10;
     }
 
     ParameterContentTypeView.prototype.initialize = function() {};
@@ -2880,7 +2774,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   DocumentView = (function(_super) {
-
     __extends(DocumentView, _super);
 
     function DocumentView() {
@@ -2888,7 +2781,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       this.switchToJSON = __bind(this.switchToJSON, this);
       this.switchToDocument = __bind(this.switchToDocument, this);
       this.fillDocument = __bind(this.fillDocument, this);
-      DocumentView.__super__.constructor.apply(this, arguments);
+      _ref11 = DocumentView.__super__.constructor.apply(this, arguments);
+      return _ref11;
     }
 
     DocumentView.prototype.events = {
@@ -2899,10 +2793,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     DocumentView.prototype.initialize = function() {
+      var e;
       try {
         return this.value = JSON.parse(this.model.defaultValue);
-      } catch (e) {
-
+      } catch (_error) {
+        e = _error;
       }
     };
 
@@ -2941,8 +2836,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       }
       try {
         this.value = JSON.parse(e.target.value);
-      } catch (e) {
-
+      } catch (_error) {
+        e = _error;
       }
       this.fillDocument();
       $('.model-json', this.$el).hide();
@@ -2963,28 +2858,28 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     DocumentView.prototype.inputChanged = function(e) {
-      var error_free, form, map, o, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+      var error_free, form, map, o, _i, _j, _k, _len, _len1, _len2, _ref12, _ref13, _ref14;
       map = {};
       form = $('.model-document', this.$el);
       error_free = true;
       if (error_free) {
-        _ref = form.find("input.property");
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          o = _ref[_i];
+        _ref12 = form.find("input.property");
+        for (_i = 0, _len = _ref12.length; _i < _len; _i++) {
+          o = _ref12[_i];
           if ((o.value != null) && jQuery.trim(o.value).length > 0) {
             this.setMapValue(map, o.name, $(o).hasClass('numeric') ? +o.value : o.value);
           }
         }
-        _ref1 = form.find("textarea.property");
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          o = _ref1[_j];
+        _ref13 = form.find("textarea.property");
+        for (_j = 0, _len1 = _ref13.length; _j < _len1; _j++) {
+          o = _ref13[_j];
           if ((o.value != null) && jQuery.trim(o.value).length > 0) {
             this.setMapValue(map, o.name, o.value);
           }
         }
-        _ref2 = form.find("select.property");
-        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-          o = _ref2[_k];
+        _ref14 = form.find("select.property");
+        for (_k = 0, _len2 = _ref14.length; _k < _len2; _k++) {
+          o = _ref14[_k];
           if ((o.value != null) && jQuery.trim(o.value).length > 0) {
             this.setMapValue(map, o.name, JSON.parse(o.value));
           }
@@ -3025,7 +2920,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   DocumentObjectView = (function(_super) {
-
     __extends(DocumentObjectView, _super);
 
     function DocumentObjectView() {
@@ -3033,13 +2927,14 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       this.setObject = __bind(this.setObject, this);
       this.render = __bind(this.render, this);
       this.initialize = __bind(this.initialize, this);
-      DocumentObjectView.__super__.constructor.apply(this, arguments);
+      _ref12 = DocumentObjectView.__super__.constructor.apply(this, arguments);
+      return _ref12;
     }
 
     DocumentObjectView.prototype.initialize = function() {};
 
     DocumentObjectView.prototype.render = function() {
-      var property, _i, _len, _ref;
+      var property, _i, _len, _ref13;
       if (!this.model.isPresent) {
         this.$el.html(Handlebars.templates.object_undefined(this.model));
       } else {
@@ -3048,9 +2943,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         } else {
           this.$el.html(Handlebars.templates.object(this.model));
         }
-        _ref = this.model.refModel.properties;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          property = _ref[_i];
+        _ref13 = this.model.refModel.properties;
+        for (_i = 0, _len = _ref13.length; _i < _len; _i++) {
+          property = _ref13[_i];
           this.addProperty(property);
         }
       }
@@ -3103,7 +2998,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   DocumentArrayView = (function(_super) {
-
     __extends(DocumentArrayView, _super);
 
     function DocumentArrayView() {
@@ -3114,13 +3008,14 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       this.newItem = __bind(this.newItem, this);
       this.render = __bind(this.render, this);
       this.initialize = __bind(this.initialize, this);
-      DocumentArrayView.__super__.constructor.apply(this, arguments);
+      _ref13 = DocumentArrayView.__super__.constructor.apply(this, arguments);
+      return _ref13;
     }
 
     DocumentArrayView.prototype.initialize = function() {};
 
     DocumentArrayView.prototype.render = function() {
-      var val, _i, _len, _ref;
+      var val, _i, _len, _ref14;
       this.items = 0;
       if (!this.model.isPresent) {
         this.$el.html(Handlebars.templates.array_undefined(this.model));
@@ -3137,9 +3032,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       $('#' + this.model.id + '-remove', this.$el).click(this.removeItem);
       $('#' + this.model.id + '-remove', this.$el).hide();
       if (this.model.value) {
-        _ref = this.model.value;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          val = _ref[_i];
+        _ref14 = this.model.value;
+        for (_i = 0, _len = _ref14.length; _i < _len; _i++) {
+          val = _ref14[_i];
           this.newItem();
         }
       }
@@ -3147,12 +3042,12 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     };
 
     DocumentArrayView.prototype.newItem = function() {
-      var property, propertyView, _ref;
+      var property, propertyView, _ref14;
       property = {};
       property.name = this.items;
       property.id = this.model.id + '_' + property.name;
       property.path = this.model.path + '.' + property.name;
-      property.dataType = ((_ref = this.model.refModel) != null ? _ref.name : void 0) || this.model.refDataType;
+      property.dataType = ((_ref14 = this.model.refModel) != null ? _ref14.name : void 0) || this.model.refDataType;
       property.refModel = this.model.refModel;
       property.isPresent = true;
       property.required = true;
@@ -3220,19 +3115,19 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   })(Backbone.View);
 
   DocumentPropertyView = (function(_super) {
-
     __extends(DocumentPropertyView, _super);
 
     function DocumentPropertyView() {
       this.render = __bind(this.render, this);
       this.initialize = __bind(this.initialize, this);
-      DocumentPropertyView.__super__.constructor.apply(this, arguments);
+      _ref14 = DocumentPropertyView.__super__.constructor.apply(this, arguments);
+      return _ref14;
     }
 
     DocumentPropertyView.prototype.initialize = function() {};
 
     DocumentPropertyView.prototype.render = function() {
-      var value, _i, _len, _ref;
+      var value, _i, _len, _ref15;
       this.model.numeric = this.model.dataType === 'number' || this.model.dataType === 'integer' ? 'numeric' : '';
       if (this.model.value) {
         this.model.defaultValue = this.model.value;
@@ -3266,9 +3161,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
             isDefault: void 0 === this.model.defaultValue
           });
         }
-        _ref = this.model.values;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          value = _ref[_i];
+        _ref15 = this.model.values;
+        for (_i = 0, _len = _ref15.length; _i < _len; _i++) {
+          value = _ref15[_i];
           this.model.selectValues.push({
             name: value === null ? 'null' : value,
             value: this.model.numeric ? parseFloat(value) : JSON.stringify(value),

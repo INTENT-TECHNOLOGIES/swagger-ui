@@ -1,0 +1,230 @@
+.swagger-section {
+  .swagger-ui-wrap {
+
+    &#swagger-ui-container {
+      font-family: "Roboto",sans-serif;
+      max-width: @globalWidth;
+      padding-bottom: 3em;
+    }
+
+    #api_info {
+      .info_title {
+        color: @mainColor;
+        font-size: 2.5em;
+        font-weight: 300;
+        padding: 0;
+      }
+
+      .info_description {
+        font-size: 1.5em;
+        margin: 1.5em 0;
+        padding: 0;
+      }
+    }
+
+    #resources_container {
+      background: @articleSectionColor;
+      //padding: 3em / 1.1em;
+      font-size: 1.1em;
+
+      pre {
+        border: none;
+      }
+
+      ul#resources {
+        .model-signature .description {
+          max-height: none;
+        }
+
+        li.operation.get {
+          h4 {
+            color: @getTitleColor;
+          }
+
+          div.heading {
+            background: @getBackgroundColor;
+            border-color: @getColor;
+
+            h3 span.http_method a {
+              background: @getColor;
+              border-radius: 0px;
+            }
+
+            ul.options li a {
+              color: @getTitleColor;
+            }
+          }
+
+          div.content {
+            background: @getBackgroundColor;
+            border-color: @getColor;
+            border-radius: 0px;
+
+            input.submit {
+              background: @getColor;
+              cursor: pointer;
+              outline: 0;
+
+              &:active {
+                background: @getActiveColor;
+              }
+            }
+          }
+        }
+
+        li.operation.put {
+          h4 {
+            color: @putTitleColor;
+          }
+
+          div.heading {
+            background: @putBackgroundColor;
+            border-color: @putColor;
+
+            h3 span.http_method a {
+              background: @putColor;
+              border-radius: 0px;
+            }
+
+            ul.options li a {
+              color: @putTitleColor;
+            }
+          }
+
+          div.content {
+            background: @putBackgroundColor;
+            border-color: @putColor;
+
+            input.submit {
+              background: @putColor;
+              cursor: pointer;
+              outline: 0;
+
+              &:active {
+                background: @putActiveColor;
+              }
+            }
+          }
+        }
+
+        li.operation.post {
+          h4 {
+            color: @postTitleColor;
+          }
+
+          div.heading {
+            background: @postBackgroundColor;
+            border-color: @postColor;
+
+            h3 span.http_method a {
+              background: @postColor;
+              border-radius: 0px;
+            }
+
+            ul.options li a {
+              color: @postTitleColor;
+            }
+          }
+
+          div.content {
+            background: @postBackgroundColor;
+            border-color: @postColor;
+
+            input.submit {
+              background: @postColor;
+              cursor: pointer;
+              outline: 0;
+
+              &:active {
+                background: @postActiveColor;
+              }
+            }
+          }
+        }
+
+        .sandbox_header {
+          padding-top: 2em;
+
+          input.submit {
+            color: white;
+            font-size: 1em;
+            padding: .5em 1em;
+            border: none;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.popup-show {
+  overflow: hidden;
+
+  .popup-overlay {
+    display: block;
+  }
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background: rgba(255,255,255,.8);
+
+  .api-popup-dialog {
+    margin: 100px auto 0 auto;
+    width: 570px;
+    background: white;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,.4);
+
+    .api-popup-title {
+      padding: 1em;
+      font-size: 1.6em;
+      border-bottom: 1px solid rgb(220,220,220);
+    }
+
+    .api-popup-content {
+      padding: 1.6em;
+
+      ul {
+        margin: 1em 0;
+      }
+
+      .api-popup-actions {
+        text-align: center;
+        padding-top: 1em;
+
+        button {
+          background: @mainColor;
+          border: none;
+          color: white;
+          font-size: 1em;
+          padding: .5em 1em;
+          border-radius: 3px;
+          margin-right: .5em;
+          cursor: pointer;
+          outline: 0;
+
+          &.gray {
+            background: none;
+            color: @mainColor;
+          }
+
+          &:active {
+            background: @postActiveColor;
+
+            &.gray {
+              background: none;
+              color: @postActiveColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

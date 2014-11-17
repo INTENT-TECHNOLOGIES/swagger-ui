@@ -20,3 +20,8 @@ swagger-ui.sublime-workspace
 .idea
 .project
 node_modules/*
+npm-debug.log
+datahub-streams.json
+datahub-events.json
+datahub-tags.json
+api-docs.json

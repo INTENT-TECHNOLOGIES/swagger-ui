@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Api Reference - Intent Documentation</title>
+    <meta name="description" content="Full documentation for API">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <link href='/styles.css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+    <script src="/api.js" type="application/javascript"></script>
+  </head>
+  <body>
+    <header>
+  <div class="web-container">
+    <div class="logo">
+      <a href="/doc">
+        <img src="/images/logo.png" alt="Intent Technologies" title="Intent Technologies" />
+      </a>
+    </div>
+
+    <nav>
+      <a href="/doc" >Documentation</a>
+      <a href="/api-ref" class="current">API Reference</a>
+    </nav>
+  </div>
+</header>
+    <div class="web-container swagger-section">
+  <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
+  <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+</div>
+
+<div class="popup-overlay"></div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    $(function () {
+      window.swaggerUi = new SwaggerUi({
+        url: "/api-docs",
+        dom_id: "swagger-ui-container",
+        supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
+        onComplete: function(swaggerApi, swaggerUi){
+          log("Loaded SwaggerUI");
+
+          if(typeof initOAuth == "function") {
+            initOAuth({
+              clientId: "a860a00c-6b84-4bd8-9871-6e1f507d8fe2",
+              realm: "null",
+              appName: "rest-api-explorer"
+            });
+          }
+          $('pre code').each(function(i, e) {
+            hljs.highlightBlock(e)
+          });
+        },
+        onFailure: function(data) {
+          log("Unable to Load SwaggerUI");
+        },
+        docExpansion: "none",
+        sorter : "alpha"
+      });
+
+      $('#input_apiKey').change(function() {
+        var key = $('#input_apiKey')[0].value;
+        log("key: " + key);
+        if(key && key.trim() != "") {
+          log("added key " + key);
+          window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+        }
+      })
+      window.swaggerUi.load();
+    });
+  };
+</script>
+    <footer>
+  <div class="about">
+    <div class="web-container">
+      <div class="col">
+        <h3>About us</h3>
+        <p>
+          We operate the first operating system dedicated to smart building. A single shared platform for all stakeholders, services and equipment. Helping you harness your data and adding value to your services at marginal cost.
+        </p>
+        <p>
+          <a href="mailto:contact@intent-technologies.eu">contact@intent-technologies.eu</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <div class="web-container">
+      © 2014 All Rights Reserved | Intent Technologies
+    </div>
+  </div>
+</footer>
+  </body>
+</html>
