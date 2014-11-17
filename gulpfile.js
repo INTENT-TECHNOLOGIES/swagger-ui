@@ -12,6 +12,7 @@ var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var fs = require('fs');
 var handlebars = require('handlebars');
+var gutil = require('gulp-util');
 
 var debug = require('gulp-debug');
 
@@ -50,6 +51,14 @@ var pages = [
     'template': 'api-ref'
   }
 ];
+
+var displayErr;
+var onError = function (err) {
+  displayErr = gutil.colors.red(err);
+  gutil.log(displayErr);
+  gutil.beep();
+  this.emit('end');
+};
 
 gulp.task('clean', ['cleanPartial'], function(cb) {
   del([
@@ -119,6 +128,7 @@ gulp.task('swagger-build', shell.task([
 gulp.task('styles', function() {
   return gulp.src(srcRoot+'/custom/less/base.less')
     .pipe(less())
+    .on('error', onError)
     .pipe(gulp.dest(distRoot+'/css'))
     .on('end', function() {
       return gulp.src([distRoot+'/css/reset.css', distRoot+'/css/base.css', distRoot+'/css/screen.css'])
@@ -154,7 +164,7 @@ gulp.task('scripts', function() {
       distRoot+'/lib/swagger-oauth.js'
     ])
     .pipe(concat('api.js'))
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(optimRoot))
 });
 
