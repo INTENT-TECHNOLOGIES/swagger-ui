@@ -74,8 +74,7 @@ gulp.task('clean', ['cleanPartial'], function(cb) {
 });
 
 gulp.task('build', ['clean', 'swagger-build'], function() {
-  fs.createReadStream(distRoot+'/o2c.html').pipe(fs.createWriteStream(optimRoot+'/o2c.html'));
-  gulp.start('buildPartial');
+  gulp.start('buildPartial', 'copy-o2c');
 });
 
 gulp.task('cleanPartial', function(cb) {
@@ -191,3 +190,7 @@ gulp.task('html', function() {
     fs.writeFileSync(optimRoot+'/'+page.filename, html);
   });
 });
+
+gulp.task('copy-o2c', function() {
+  return gulp.src(distRoot+'/o2c.html').pipe(gulp.dest(optimRoot));
+})
