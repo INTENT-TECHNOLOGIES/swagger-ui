@@ -24,7 +24,8 @@ var optimRoot = distRoot + '/optimized';
 var srcRoot = __dirname + '/src';
 var pages = [
   {
-    'filename': 'doc.html',
+    'filename': 'index.html',
+    'folder': 'doc-base',
     'lang': 'en',
     'title': 'Intent Documentation',
     'desc': 'Full documentation access',
@@ -33,7 +34,8 @@ var pages = [
     'template': 'doc-home'
   },
   {
-    'filename': 'doc-intro.html',
+    'filename': 'index.html',
+    'folder': 'documentation',
     'lang': 'fr',
     'title': 'API Doc - Intent Documentation',
     'desc': 'intentOS offre aux développeurs une API de données REST leur permettant d’accéder et de contribuer au suivi des activités relatives à l’exploitation du patrimoine immobilier de ses clients.',
@@ -42,7 +44,8 @@ var pages = [
     'template': 'doc-intro'
   },
   {
-    'filename': 'api-ref.html',
+    'filename': 'index.html',
+    'folder': 'reference',
     'lang': 'en',
     'title': 'API Reference - Intent Documentation',
     'desc': 'Full documentation for API',
@@ -78,10 +81,10 @@ gulp.task('build', ['clean', 'swagger-build'], function() {
 
 gulp.task('cleanPartial', function(cb) {
   del([
-    optimRoot+'/api.js',
-    optimRoot+'/styles.css',
-    optimRoot+'/images/*',
-    optimRoot+'/html/*'
+    //optimRoot+'/api.js',
+    //optimRoot+'/styles.css',
+    //optimRoot+'/images/*',
+    optimRoot+'/*'
   ], cb);
 });
 
@@ -189,6 +192,9 @@ gulp.task('html', function() {
       'footer': footerTpl()
     });
 
-    fs.writeFileSync(optimRoot+'/html/'+page.filename, html);
+    if (!fs.existsSync(optimRoot+'/'+page.folder)) {
+      fs.mkdirSync(optimRoot+'/'+page.folder);
+    }
+    fs.writeFileSync(optimRoot+'/'+page.folder+'/'+page.filename, html);
   });
 });
