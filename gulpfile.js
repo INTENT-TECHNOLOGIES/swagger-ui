@@ -24,7 +24,7 @@ var optimRoot = distRoot + '/optimized';
 var srcRoot = __dirname + '/src';
 var pages = [
   {
-    'filename': 'index.html',
+    'filename': 'doc-begin.html',
     'folder': 'doc-base',
     'lang': 'en',
     'title': 'Intent Documentation',
@@ -81,9 +81,6 @@ gulp.task('build', ['clean', 'swagger-build'], function() {
 
 gulp.task('cleanPartial', function(cb) {
   del([
-    //optimRoot+'/api.js',
-    //optimRoot+'/styles.css',
-    //optimRoot+'/images/*',
     optimRoot+'/*'
   ], cb);
 });
