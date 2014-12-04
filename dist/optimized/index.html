@@ -42,6 +42,7 @@
         <li><a href="#introduction-pre-requis">Pré-requis</a></li>
         <li><a href="#introduction-concepts">Concepts sous-jacents</a></li>
         <li><a href="#introduction-style-api">Syle de l'API</a></li>
+        <li><a href="#introduction-activites">Activités</a></li>
         <li><a href="#introduction-tutoriel">Tutoriel</a></li>
       </ul>
     </nav>
@@ -268,6 +269,194 @@
       <p>
         intentOS s’appuie sur OAuth2 pour gérer les permissions d’accès aux API. Le modèle OAuth régit de façon standardisée la négociation d’une autorisation d’accès accordée par un propriétaire de ressources (un tiers souscrit au service) à une application cliente (votre application) accédant à ses ressources via une API (ici l’API intentOS).
       </p>
+
+
+
+
+      <h2 id="introduction-activites">Activités</h2>
+      <h3>Types d’activités observables par le système</h3>
+      <p>
+        Le système définit un certain nombre d’activités.
+      </p>
+      <p>
+        Le tableau présenté ci-après indique les différents types d’activités gérées par le système.<br/>
+        Sont précisés pour chaque type :
+      </p>
+      <ul>
+        <li><span>la clé d’activité, à spécifier dans les URL pour sélectionner la ou les activités correspondantes sur un élément de la base patrimoniale ;</span></li>
+        <li><span>la nature des activités en question ;</span></li>
+        <li><span>l’unité des données qu’il est possible de publier dans les activités de ce type ;</span></li>
+        <li><span>les éléments pour lesquels le système crée une activité de ce type.</span></li>
+      </ul>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Clé d’activité</th>
+            <th>Nature</th>
+            <th>Unité associée</th>
+            <th>Eléments du patrimoine</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>OutsideAirTemp</td>
+            <td>Suivi de la température de l’air extérieur</td>
+            <td>°C</td>
+            <td>sites</td>
+          </tr>
+          <tr>
+            <td>OutsideAirHygro</td>
+            <td>Suivi de l’hygrométrie de l’air extérieur</td>
+            <td>%</td>
+            <td>sites</td>
+          </tr>
+          <tr>
+            <td>OutsideAirPressure</td>
+            <td>Pression de l’air extérieur</td>
+            <td>Pa</td>
+            <td>sites</td>
+          </tr>
+          <tr>
+            <td>WindSpeed</td>
+            <td>Suivi de la vitesse du vent</td>
+            <td>km/h</td>
+            <td>sites</td>
+          </tr>
+          <tr>
+            <td>WindDirection</td>
+            <td>Suivi de la direction du vent</td>
+            <td></td>
+            <td>sites</td>
+          </tr>
+          <tr>
+            <td>AirTemp</td>
+            <td>Suivi de la température de l’air intérieur</td>
+            <td>°C</td>
+            <td>sites, parties</td>
+          </tr>
+          <tr>
+            <td>AirHygro</td>
+            <td>Suivi de l’hygrométrie de l’air intérieur</td>
+            <td>%</td>
+            <td>sites, parties</td>
+          </tr>
+          <tr>
+            <td>ElecCons</td>
+            <td>Suivi de la consommation électrique</td>
+            <td>kW/h</td>
+            <td>sites, parties</td>
+          </tr>
+          <tr>
+            <td>LightingElecCons</td>
+            <td>Suivi de la consommation éléctrique de l’éclairage</td>
+            <td>kW/h</td>
+            <td>sites, parties</td>
+          </tr>
+          <tr>
+            <td>HotWaterProdElecCons</td>
+            <td>Suivi de la consommation éléctrique de la production d’eau chaude sanitaire</td>
+            <td>kW/h</td>
+            <td>sites, parties</td>
+          </tr>
+          <tr>
+            <td>GasCons</td>
+            <td>Suivi de la consommation de gaz</td>
+            <td>m3</td>
+            <td>sites, parties</td>
+          </tr>
+          <tr>
+            <td>WaterCons</td>
+            <td>Suivi de la consommation globale d’eau</td>
+            <td>m3</td>
+            <td>sites, parties</td>
+          </tr>
+          <tr>
+            <td>ColdWaterCons</td>
+            <td>Suivi de la consommation d’eau froide</td>
+            <td>m3</td>
+            <td>parties</td>
+          </tr>
+          <tr>
+            <td>HotWaterCons</td>
+            <td>Suivi de la consommation d’eau chaude sanitaire</td>
+            <td>m3</td>
+            <td>parties</td>
+          </tr>
+          <tr>
+            <td>BoilerInboundTemp</td>
+            <td>Suivi de la température d’entrée d’une chaufferie</td>
+            <td>°C</td>
+            <td>sites</td>
+          </tr>
+          <tr>
+            <td>BoilerOutboundTemp</td>
+            <td>Suivi de la température de sortie d’une chaufferie</td>
+            <td>°C</td>
+            <td>sites</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Données d’activités</h3>
+      <p>Le système autorise la publication de différents types de données d’activité :</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Type de donnée</th>
+            <th>Nature de la donnée</th>
+            <th width="60%">Attributs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>alert</td>
+            <td>
+              Alerte relative à l’activité observée ; par exemple une température anormalement élevée.
+            </td>
+            <td>
+              - type : code permettant de déterminer la nature de l’alerte<br/>
+              - status : statut de l’alerte (ouverte, fermée)<br/>
+              - infos : informations complémentaires<br/>
+              - timestamp : marqueur temporel d’occurrence du motif de l’alerte
+            </td>
+          </tr>
+          <tr>
+            <td>snapshot</td>
+            <td>
+              Valeur instantanée ; par exemple un index de compteur de consommation électrique.
+            </td>
+            <td>
+              - value : valeur exprimée dans l’unité associée au type de l’activité dans lequel la donnée est publiée ;<br/>
+              - timestamp : marqueur temporel de prise de l’instantané ;<br/>
+              - trustlevel : niveau de confiance attribué à l’instantané (ex: un relevé manuel vs un relevé automatique)
+            </td>
+          </tr>
+          <tr>
+            <td>delta</td>
+            <td>
+              Delta entre deux mesures ; pour exprimer par exemple une consommation électrique journalière.
+            </td>
+            <td>
+              - value : valeur exprimée dans l’unité associée au type de l’activité dans lequel la donnée est publiée ;<br/>
+              - timestamp : marqueur temporel à partir duquel le delta est exprimé<br/>
+              - duration : durée durant laquelle le delta est exprimé (heure, jour, mois, semaine, année)
+            </td>
+          </tr>
+          <tr>
+            <td>average</td>
+            <td>
+              Moyenne des données de l’activité sur une période ; par exemple la température moyenne la nuit.
+            </td>
+            <td>
+              - value : valeur exprimée dans la mesure autorisé par le type de l’activité dans lequel la donnée est publiée ;<br/>
+              - timestamp : marqueur temporel à partir duquel le delta est exprimé<br/>
+              - duration : durée durant laquelle le delta est exprimé (heure, jour, mois, semaine, année)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
 
 
 

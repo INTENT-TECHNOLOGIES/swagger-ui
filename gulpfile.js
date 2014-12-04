@@ -74,6 +74,7 @@ gulp.task('clean', ['cleanPartial'], function(cb) {
 });
 
 gulp.task('build', ['clean', 'swagger-build'], function() {
+  fs.createReadStream(distRoot+'/o2c.html').pipe(fs.createWriteStream(optimRoot+'/o2c.html'));
   gulp.start('buildPartial');
 });
 
@@ -97,11 +98,11 @@ gulp.task('watch', function() {
 gulp.task('serve', function() {
   var app = express();
 
-  app.use('/', express.static(optimRoot+'/'));
+  //app.use('/', express.static(optimRoot+'/'));
 
-  app.use('/api-reference', express.static(optimRoot+'/html/api-ref.html'));
-  app.use('/documentation', express.static(optimRoot+'/html/doc-intro.html'));
-  app.use('/doc', express.static(optimRoot+'/html/doc.html'));
+  //app.use('/api-reference', express.static(optimRoot+'/html/api-ref.html'));
+  app.use('/documentation', express.static(optimRoot+'/'));
+  //app.use('/doc', express.static(optimRoot+'/html/doc.html'));
 
   //Routes for API swagger
   app.use('/api-docs', express.static(distRoot+'/api-docs.json'));
