@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Introduction - Intent Documentation</title>
+    <meta name="description" content="IntentOS offre aux développeurs une API de données REST leur permettant d’accéder et de contribuer au suivi des activités relatives à l’exploitation du patrimoine immobilier de ses clients.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <link href='/styles.css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+    <script src="/api.js" type="application/javascript"></script>
+  </head>
+  <body>
+    <header>
+  <div class="web-container">
+    <div class="logo">
+      <a href="/documentation">
+        <img src="/images/logo.png" alt="Intent Technologies" title="Intent Technologies" />
+      </a>
+    </div>
+
+    <nav>
+      <a href="/documentation" class="current">Documentation</a>
+      <a href="/api-reference" >API Reference</a>
+    </nav>
+  </div>
+</header>
+    <section class="web-container">
+  <article>
+    <header>
+      <h1>Introduction</h1>
+      <p>
+          intentOS offre aux développeurs une API de données REST leur permettant d’accéder et de contribuer au suivi des activités relatives à l’exploitation du patrimoine immobilier de ses clients.
+      </p>
+    </header>
+    <nav id="article-nav">
+      <ul>
+        <li class="title">Menu</li>
+        <li><a href="#introduction-pre-requis">Pré-requis</a></li>
+        <li><a href="#introduction-concepts">Concepts sous-jacents</a></li>
+        <li><a href="#introduction-style-api">Syle de l'API</a></li>
+        <li><a href="#introduction-tutoriel">Tutoriel</a></li>
+      </ul>
+    </nav>
+    <section>
+      <h2 id="introduction-pre-requis">Pré-requis</h2>
+      <p>
+        L’utilisation de l’API nécessite d’être enregistré au programme développeur d’Intent Technologies. Cet enregistrement est activé sur demande pour toute organisation souscrite au service intentOS.
+      </p>
+      <p>
+        Il s’effectue sur simple demande auprès de Intent Technologies. <a href="mailto:contact@intent-technologies.eu">Contactez Intent Technologies</a> pour activer votre compte développeur.
+      </p>
+
+
+
+
+      <h2 id="introduction-concepts">Concepts sous-jacents</h2>
+
+      <h3>Patrimoine</h3>
+      <p>
+          Le client commence par alimenter une base listant à la fois les composants de son patrimoine immobilier - les <b>sites</b>, leurs <b>parties</b> communes et privatives - et les divers <b>équipements</b> déployés en son sein.
+      </p>
+
+      <h3>Activités</h3>
+      <p>
+        A chaque élément du patrimoine est associé un ensemble prédéfini d’activités que le système va observer, comme par exemple le suivi de la température intérieure d’un logement, de l’état de fonctionnement d’un équipement ou encore des visites d’entretien annuel d’une chaudière individuelle.
+      </p>
+
+      <h3>Données d’activité</h3>
+      <p>
+        Les applications connectées au système ; que ces applications soient des systèmes d’information, des interfaces utilisateur ou des capteurs déployés sur le terrain ; alimentent ces activités au fil de l’eau avec des données temporelles - des mesures, des alertes - caractérisant l’activité correspondante, comme par exemple un relevé de compteur, une alarme de panne ou encore un compte-rendu de visite.
+      </p>
+
+      <h3>États</h3>
+      <p>
+        Au fur et à mesure de la publication de nouvelles données d’activité, le système analyse ces données puis, en fonction des critères d’analyse définis par le client - un seuil de température anormale par exemple, maintient à jour un état de l’élément du patrimoine auquel il est rattaché. L’état courant et les états antérieurs de cet élément sont en permanence consultables par le client.
+      </p>
+
+      <h3>Partages</h3>
+      <p>
+        Les composants de la base patrimoniale, les activités et leurs données ainsi que les états sont la propriétés du client. Ils ne sont par conséquent pas visibles des autres clients.
+      </p>
+      <p>
+        intentOS permet cependant à un client de partager avec un tiers, lui-même souscrit au service, tout ou partie des activités associés à son patrimoine. Ces activités deviennent alors visibles par ce tiers depuis les interfaces du service, comme d’ailleurs les caractéristiques du patrimoine sous-jacent. Les données publiées dans ces activités sont également accessibles et, si le client l’y a autorisé, le tiers peut lui même publier de nouvelles données dans ces activités.
+      </p>
+      <p>
+        Les états ne sont en revanche jamais partagés. Le système génère en effet pour chaque souscripteur un état privé des éléments du patrimoine à partir des données d’activités auxquelles il a accès.
+      </p>
+
+      <h2>Fonctionnalités de l’API</h2>
+      <p>
+        Grâce à cette API, il est possible d’intégrer à vos applications les données et fonctionnalités suivantes :
+      </p>
+
+      <h4>Sites</h4>
+      <ul>
+        <li><span>Lister les sites du patrimoine</span></li>
+        <li><span>Visualiser les caractéristiques d’un sites</span></li>
+        <li><span>Lister les activités d’un site</span></li>
+        <li><span>Visualiser l’état d’un site (états courant et états archivés)</span></li>
+        <li><span>Lister les parties d’un site</span></li>
+        <li><span>Lister les équipements d’un site</span></li>
+      </ul>
+
+      <h4>Parties</h4>
+      <ul>
+        <li><span>Lister les parties du patrimoine</span></li>
+        <li><span>Visualiser les caractéristiques d’une partie</span></li>
+        <li><span>Lister les activités d’une partie</span></li>
+        <li><span>Visualiser l’état d’une partie (états courant et états archivés)</span></li>
+        <li><span>Lister les équipements d’une partie</span></li>
+      </ul>
+
+      <h4>Équipements</h4>
+      <ul>
+        <li><span>Lister les équipements du patrimoine</span></li>
+        <li><span>Visualiser les caractéristiques d’un équipement</span></li>
+        <li><span>Lister les activités d’un équipement</span></li>
+        <li><span>Visualiser l’état d’un équipement (états courant et états archivés)</span></li>
+      </ul>
+
+      <h4>Activités</h4>
+      <ul>
+        <li><span>Lister les données publiées dans une activité</span></li>
+        <li><span>Publier des données dans une activité</span></li>
+      </ul>
+
+
+
+
+      <h2 id="introduction-style-api">Style de l’API</h2>
+
+      <h3>REST</h3>
+      <p>
+        L’API intentOS respecte le modèle REST.
+      </p>
+      <p>
+        REST est un standard léger applicable à la mise en oeuvre de Services Web sans état avec lesquels il est possible d’interagir simplement à l’aide du seul protocole HTTP.
+      </p>
+      <p>
+        Chaque élément du modèle de données intentOS - chaque site, chaque partie, chaque équipement, chaque activité - est ainsi identifié par un chemin d’accès ; dans le tableau ci-dessous, les chemins d’accès sont exprimés par rapport à la racine de l’API :
+      </p>
+
+      <table class="two-col-definition">
+        <thead>
+          <tr>
+            <th>Chemin d'accès</th>
+            <th>Eléments identifiés</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>/sites</b></td>
+            <td>Liste des sites du client et des sites pour lesquels des activités sont partagées avec le client</td>
+          </tr>
+          <tr>
+            <td><b>/sites/{ID site}</b></td>
+            <td>Site {ID site}<br/>Exemple : “/sites/Rosiers-B”</td>
+          </tr>
+          <tr>
+            <td><b>/sites/{ID site}/parts</b></td>
+            <td>Parties rattachées au site {ID site}<br/>Exemple : “/sites/Rosiers-B/parts”</td>
+          </tr>
+          <tr>
+            <td><b>/sites/{ID site}/equip</b></td>
+            <td>Equipements rattachés au site {ID site}<br/>Exemple : “/sites/Rosiers-B/equip”</td>
+          </tr>
+          <tr>
+            <td><b>/sites/{ID site}/activities</b></td>
+            <td>Activités rattachées au site {ID site}<br/>Exemple : “/sites/Rosiers-B/activities”</td>
+          </tr>
+          <tr>
+            <td><b>/sites/{ID site}/activities/{clé activité}</b></td>
+            <td>Données de l’activité {clé activité} du site {ID site}<br/>Exemple : “/sites/Rosiers-B/activities/OutsideTemp”</td>
+          </tr>
+          <tr>
+            <td><b>/parts</b></td>
+            <td>Liste des parties du client et des parties pour lesquels des activités sont partagées avec le client</td>
+          </tr>
+          <tr>
+            <td><b>/parts/{ID partie}</b></td>
+            <td>Partie {ID partie}<br/>Exemple : “/parts/Logement-RB212”</td>
+          </tr>
+          <tr>
+            <td><b>/parts/{ID partie}/equip</b></td>
+            <td>Equipements rattachés à la partie {ID partie}<br/>Exemple : “/parts/Logement-RB212/equip”</td>
+          </tr>
+          <tr>
+            <td><b>/parts/{ID partie}/activities</b></td>
+            <td>Activités rattachées à la partie {ID partie}<br/>Exemple : “/parts/Logement-RB212/activities”</td>
+          </tr>
+          <tr>
+            <td><b>/parts/{ID partie}/activities/{clé activité}</b></td>
+            <td>Données de l’activité {clé activité} de la partie {ID partie}<br/>Exemple : “/parts/Logement-RB212/activities/AirTemp”</td>
+          </tr>
+          <tr>
+            <td><b>/equip</b></td>
+            <td>Liste des équipements du client et des équipements pour lesquels des activités sont partagées avec le client</td>
+          </tr>
+          <tr>
+            <td><b>/equip/{ID équipement}</b></td>
+            <td>Equipement {ID équipement}<br/>Exemple : “/equip/Lift-TK789”</td>
+          </tr>
+          <tr>
+            <td><b>/equip/{ID équipement}/activities</b></td>
+            <td>Activités rattachées à l’équipement {ID équipement}<br/>Exemple : “/equip/Lift-TK789/activities”</td>
+          </tr>
+          <tr>
+            <td><b>/equip/{ID équipement}/activities/{clé activité}</b></td>
+            <td>Données de l’activités {clé activité} de l’équipement {ID équipement}<br/>Exemple : “/equip/Lift-TK789/activities/State”</td>
+          </tr>
+          <tr>
+            <td><b>/activities</b></td>
+            <td>Liste des activités des éléments du patrimoine du client et des activités partagées avec le client.</td>
+          </tr>
+          <tr>
+            <td><b>/activities/{clé activité}</b></td>
+            <td>Données les activités identifiées par la clé {clé activité}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Le verbe HTTP utilisé pour accéder à l’URL indique la fonctionnalité de l’API déclenchée sur l’élément correspondant :
+      </p>
+
+      <table class="two-col-definition">
+        <thead>
+        <tr>
+          <th>Verbe HTTP</th>
+          <th>Fonctionnalité</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>GET</b></td>
+            <td>Télécharger une représentation de l’élément</td>
+          </tr>
+          <tr>
+            <td><b>PUT</b></td>
+            <td>Mettre à jour l’élément</td>
+          </tr>
+          <tr>
+            <td><b>POST</b></td>
+            <td>Ajouter l'élément</td>
+          </tr>
+          <tr>
+            <td><b>DELETE</b></td>
+            <td>Supprimer l'élément</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Représentation des éléments</h3>
+      <p>
+        Les éléments sont représentés par l’API sous la forme de documents structurés au format JSON.
+      </p>
+
+      <h3>Chiffrement.</h3>
+      <p>
+        L’API intentOS impose l’utilisation de HTTPS pour accéder aux ressources de l’API. De cette manière, l’ensemble des documents échangés entre vos applications et l’API sont chiffrées.
+      </p>
+
+      <h3>Autorisations</h3>
+      <p>
+        intentOS s’appuie sur OAuth2 pour gérer les permissions d’accès aux API. Le modèle OAuth régit de façon standardisée la négociation d’une autorisation d’accès accordée par un propriétaire de ressources (un tiers souscrit au service) à une application cliente (votre application) accédant à ses ressources via une API (ici l’API intentOS).
+      </p>
+
+
+
+      <h2 id="introduction-tutoriel">Tutoriel</h2>
+
+      <h3>Pré-requis : récupération des identifiants d’authentification</h3>
+      <p>
+        <a href="mailto:contact@intent-technologies.eu">Contactez Intent Technologies</a> pour activer votre compte développeur et obtenir votre <code>CLIENT_ID</code> et <code>CLIENT_SECRET</code>.
+      </p>
+
+      <h3>Etape 1 : obtention d’un access_token</h3>
+      <p>
+        Une fois vos identifiants obtenus, vous devez obtenir un <code>access_token</code> afin d’autoriser les requêtes faites à l’API. Pour celà,  vous devez faire une requête sur l’URL :
+      </p>
+      <pre>
+curl
+  http://oauthdemo2.intent-technologies.eu/oauth/token
+  -d "grant_type=client_credentials"
+  -d "client_id={CLIENT_ID}" -d "client_secret={CLIENT_SECRET}"</pre>
+      <p>
+        En réponse, vous recevrez un <code>access_token</code> :
+      </p>
+      <pre>
+{
+  "token_type":"bearer",
+  "access_token":"bc378d50dca644816b777afd26d21e7260bb8296",
+  "expires_in":3600
+}</pre>
+
+      <h3>Etape 2 : appel à une route de l’API</h3>
+      <p>
+        L’exemple suivant décrit la publication d’un instantané dans une activité :
+      </p>
+
+      <pre>
+curl
+  -X POST -H "Content-Type: application/json"
+  -H "Authorization: Bearer bc378d50dca644816b777afd26d21e7260bb8296"
+  -d "{
+    "address": {
+      "num": "1",
+      "way": "rue des pénitents blancs",
+      "city": "Toulouse",
+      "zip": "31000",
+      "country": "fr",
+      "pos": {
+        "lat": "43.6019",
+        "lng": "1.4498"
+      },
+      "dataType": "snapshot"
+      "payload": {
+        "timestamp": 1409522400000,
+	      "value": 24
+      }
+    }
+  }"
+  https://apidemo.intent-technologies.eu/api/datahub/v1/activities/OutsideAirTemp</pre>
+
+    </section>
+  </article>
+</section>
+    <footer>
+  <div class="about">
+    <div class="web-container">
+      <div class="col">
+        <h3>À propos</h3>
+        <p>
+          Nous opérons le premier système d’exploitation du bâtiment connecté. Une plateforme unique et partagée entre tous les acteurs, services et équipements. Pour vous aider à maîtriser vos données et distribuer vos services à coûts maîtrisés.
+        </p>
+        <p>
+          <a href="mailto:contact@intent-technologies.eu">contact@intent-technologies.eu</a>
+        </p>
+        <p>
+          <a href="tel:+33972309151">+33 9 72 30 91 51</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <div class="web-container">
+      © 2014 All Rights Reserved | Intent Technologies
+    </div>
+  </div>
+</footer>
+  </body>
+</html>
