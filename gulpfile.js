@@ -163,7 +163,7 @@ gulp.task('scripts', function() {
       srcRoot+'/custom/scripts/doc.js'
     ])
     .pipe(concat('api.js'))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest(optimRoot))
 });
 
