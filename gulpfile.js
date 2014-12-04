@@ -33,18 +33,18 @@ var pages = [
     'template': 'doc-home'
   },
   {
-    'filename': 'doc-auth.html',
-    'lang': 'en',
-    'title': 'Authentication - Intent Documentation',
-    'desc': 'Full documentation for authentication',
+    'filename': 'doc-intro.html',
+    'lang': 'fr',
+    'title': 'API Doc - Intent Documentation',
+    'desc': 'intentOS offre aux développeurs une API de données REST leur permettant d’accéder et de contribuer au suivi des activités relatives à l’exploitation du patrimoine immobilier de ses clients.',
     'navDoc': true,
     'navApi': false,
-    'template': 'doc-auth'
+    'template': 'doc-intro'
   },
   {
     'filename': 'api-ref.html',
     'lang': 'en',
-    'title': 'Api Reference - Intent Documentation',
+    'title': 'API Reference - Intent Documentation',
     'desc': 'Full documentation for API',
     'navDoc': false,
     'navApi': true,
@@ -101,8 +101,8 @@ gulp.task('serve', function() {
 
   app.use('/', express.static(optimRoot+'/'));
 
-  app.use('/api-ref', express.static(optimRoot+'/html/api-ref.html'));
-  app.use('/doc/auth', express.static(optimRoot+'/html/doc-auth.html'));
+  app.use('/api-reference', express.static(optimRoot+'/html/api-ref.html'));
+  app.use('/documentation', express.static(optimRoot+'/html/doc-intro.html'));
   app.use('/doc', express.static(optimRoot+'/html/doc.html'));
 
   //Routes for API swagger
@@ -161,7 +161,8 @@ gulp.task('scripts', function() {
       distRoot+'/lib/swagger.js',
       distRoot+'/swagger-ui.js',
       distRoot+'/lib/highlight.7.3.pack.js',
-      distRoot+'/lib/swagger-oauth.js'
+      distRoot+'/lib/swagger-oauth.js',
+      srcRoot+'/custom/scripts/doc.js'
     ])
     .pipe(concat('api.js'))
     .pipe(uglify())

@@ -1,9 +1,10 @@
 body {
   background: #f7f7f7;
   color: #212121;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.8em;
 }
 body b,
@@ -27,6 +28,15 @@ body code {
   color: #ffffff;
   padding: .2em .5em;
   border-radius: 5px;
+  font-family: monospace;
+}
+body pre {
+  background: #505153;
+  color: #ffffff;
+  padding: .5em 1em;
+  border-radius: 5px;
+  font-family: monospace;
+  overflow: scroll;
 }
 body hr {
   display: block;
@@ -36,7 +46,7 @@ body hr {
   border-bottom: 1px solid #dcdcdc;
 }
 body .web-container {
-  width: 960px;
+  width: 1140px;
   margin: 0 auto;
   position: relative;
 }
@@ -45,10 +55,13 @@ body header {
   height: 6.5em;
   border-bottom: 1px solid #cfd9ce;
 }
+body header .logo {
+  padding-top: 1em;
+}
 body header .logo a,
 body header .logo img {
   display: block;
-  height: 100%;
+  height: 4.5em;
 }
 body header nav {
   position: absolute;
@@ -57,9 +70,9 @@ body header nav {
   height: 6.5em;
 }
 body header nav a {
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-decoration: none;
-  line-height: 4.33333333em;
+  line-height: 5em;
   color: #212121;
   text-transform: uppercase;
   margin-right: 1.5em;
@@ -73,9 +86,36 @@ body header nav a:hover {
 body header nav a.current {
   color: #66ba46;
 }
+body article {
+  position: relative;
+}
+body article nav {
+  float: left;
+  width: 220px;
+}
+body article nav ul li {
+  border-left: 5px solid #c8e6c9;
+  padding: .5em;
+  padding-left: 1.6em;
+  list-style-type: none;
+  margin-left: 0px;
+}
+body article nav ul li:hover {
+  border-left: 5px solid #66ba46;
+}
+body article nav ul li.title {
+  color: #757575;
+  padding-top: 0;
+}
+body article nav ul li.title:hover {
+  border-left: 5px solid #c8e6c9;
+}
+body article nav ul li a {
+  color: #66ba46;
+}
 body article header {
   background: none;
-  padding-top: 3.5em;
+  padding: 3.5em 0;
   border: 0;
   height: auto;
 }
@@ -84,25 +124,78 @@ body article header h1 {
   font-size: 2.5em;
 }
 body article header p {
-  font-size: 1.5em;
-  margin: 1.5em 0;
+  font-size: 1.2em;
+  margin-top: 1.5em;
 }
 body article section {
+  margin-left: 230px;
   background: none;
-  padding: 3em 0 6em 0;
+  padding: 4em;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.25);
+  margin-bottom: 4em;
 }
 body article section h2 {
+  font-size: 2em;
+  margin: 2em 0;
+  color: #000000;
+}
+body article section h2:first-child {
+  margin-top: 0px;
+}
+body article section h3 {
   font-size: 1.5em;
+  margin-top: 1.2em;
   margin-bottom: 1em;
-  color: #66ba46;
+  color: #000000;
+}
+body article section h4 {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-top: 1.2em;
+  margin-bottom: 1em;
 }
 body article section p {
-  margin: 3em 0;
+  margin: 1em 0;
+}
+body article section ul {
+  margin: 1em 0;
+}
+body article section ul li {
+  padding: .2em;
+  padding-left: .5em;
+  margin-left: 1.2em;
+  list-style-type: square;
+  color: #66ba46;
+}
+body article section ul li span {
+  color: #212121;
 }
 body article section img {
   display: block;
   width: 80%;
   margin: 3em auto;
+}
+body article section table {
+  margin: 1em 0;
+  width: 100%;
+}
+body article section table.two-col-definition th:nth-child(1) {
+  width: 40%;
+}
+body article section table th {
+  font-style: italic;
+  padding: .5em;
+}
+body article section table td {
+  border: 1px solid #dcdcdc;
+  padding: .5em 1em;
+}
+body article section.home {
+  background: none;
+  box-shadow: none;
+  padding: 0px;
+  margin-bottom: 5em;
 }
 body article section.home:after,
 body article section.home:before {
@@ -118,6 +211,7 @@ body article section.home .col {
 }
 body article section.home .col h2 {
   font-size: 1.8em;
+  color: #66ba46;
 }
 body article section.home .col ul {
   width: 80%;
@@ -126,6 +220,8 @@ body article section.home .col ul li {
   border-left: 5px solid #c8e6c9;
   padding: .5em;
   padding-left: 1.6em;
+  list-style-type: none;
+  margin-left: 0px;
 }
 body article section.home .col ul li:hover {
   border-left: 5px solid #66ba46;
@@ -176,9 +272,13 @@ body footer .copyright {
   padding: 2em;
   color: #8c9195;
 }
+body.scrolltop-more-than-330 article nav {
+  position: absolute;
+  left: 0px;
+}
 .swagger-section .swagger-ui-wrap#swagger-ui-container {
   font-family: "Roboto", sans-serif;
-  max-width: 960px;
+  max-width: 1140px;
   padding-bottom: 3em;
 }
 .swagger-section .swagger-ui-wrap #api_info .info_title {
@@ -349,4 +449,62 @@ body.popup-show .popup-overlay {
 .popup-overlay .api-popup-dialog .api-popup-content .api-popup-actions button:active.gray {
   background: none;
   color: #43a047;
+}
+@media all and (max-width: 1150px) {
+  body {
+    font-size: 15px;
+  }
+  body .web-container {
+    width: auto;
+    padding: 0 1em;
+  }
+  body header nav {
+    right: 1em;
+  }
+  body article nav {
+    display: none;
+  }
+  body article section {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media all and (max-width: 720px) {
+  body header {
+    height: auto;
+    border: none;
+  }
+  body header .web-container {
+    padding: 0;
+  }
+  body header .logo {
+    border-bottom: 1px solid #cfd9ce;
+  }
+  body header .logo img {
+    margin: 0 auto;
+  }
+  body header nav {
+    height: auto;
+    display: block;
+    position: static;
+  }
+  body header nav a {
+    display: block;
+    background: white;
+    width: auto;
+    text-align: center;
+    padding: 1em;
+    line-height: 1em;
+    border-bottom: 1px solid #cfd9ce;
+    margin: 0;
+  }
+  body article section {
+    padding: 4em 1.5em;
+  }
+  body article section table.two-col-definition {
+    width: auto;
+  }
+  body article section table.two-col-definition th:nth-child(1) {
+    width: auto;
+  }
 }

@@ -3,9 +3,10 @@
 body {
   background: @backgroundColor;
   color: @textColor;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.8em;
 
   b, strong {
@@ -29,6 +30,16 @@ body {
     color: @codeColor;
     padding: .2em .5em;
     border-radius: 5px;
+    font-family: monospace;
+  }
+
+  pre {
+    background: @codeBackgroundColor;
+    color: @codeColor;
+    padding: .5em 1em;
+    border-radius: 5px;
+    font-family: monospace;
+    overflow: scroll;
   }
 
   hr {
@@ -50,9 +61,13 @@ body {
     height: 6.5em;
     border-bottom: 1px solid @headerBorderColor;
 
-    .logo a, .logo img {
-      display: block;
-      height: 100%;
+    .logo {
+      padding-top: 1em;
+
+      a, img {
+        display: block;
+        height: 4.5em;
+      }
     }
 
     nav {
@@ -62,9 +77,9 @@ body {
       height: 6.5em;
 
       a {
-        font-size: 1.5em;
+        font-size: 1.3em;
         text-decoration: none;
-        line-height: 6.5em / 1.5em;
+        line-height: 6.5em / 1.3em;
         color: @textColor;
         text-transform: uppercase;
         margin-right: 1.5em;
@@ -85,9 +100,45 @@ body {
   }
 
   article {
+    position: relative;
+
+    nav {
+      float: left;
+      width: 220px;
+
+      ul {
+        li {
+          border-left: 5px solid @postBackgroundColor;
+          padding: .5em;
+          padding-left: 1.6em;
+          list-style-type: none;
+          margin-left: 0px;
+
+          &:hover {
+            border-left: 5px solid @mainColor;
+          }
+        }
+
+        li.title {
+          //font-size: 1.1em;
+          color: @articleHomeTitle;
+          padding-top: 0;
+
+          &:hover {
+            border-left: 5px solid @postBackgroundColor;
+          }
+        }
+
+        li a {
+          //font-size: 1.3em;
+          color: @mainColor;
+        }
+      }
+    }
+
     header {
       background: none;
-      padding-top: 3.5em;
+      padding: 3.5em 0;
       border: 0;
       height: auto;
 
@@ -97,23 +148,61 @@ body {
       }
 
       p {
-        font-size: 1.5em;
-        margin: 1.5em 0;
+        font-size: 1.2em;
+        margin-top: 1.5em;
       }
     }
 
     section {
+      margin-left: 230px;
       background: @articleSectionColor;
-      padding: 3em 0 6em 0;
+      padding: 4em;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 4px 8px rgba(0,0,0,.25);
+      margin-bottom: 4em;
 
       h2 {
+        font-size: 2em;
+        margin: 2em 0;
+        color: @h2Color;
+
+        &:first-child {
+          margin-top: 0px;
+        }
+      }
+
+      h3 {
         font-size: 1.5em;
+        margin-top: 1.2em;
         margin-bottom: 1em;
         color: @h2Color;
       }
 
+      h4 {
+        font-size: 1.2em;
+        font-weight: 700;
+        margin-top: 1.2em;
+        margin-bottom: 1em;
+      }
+
       p {
-        margin: 3em 0;
+        margin: 1em 0;
+      }
+
+      ul {
+        margin: 1em 0;
+
+        li {
+          padding: .2em;
+          padding-left: .5em;
+          margin-left: 1.2em;
+          list-style-type: square;
+          color: @mainColor;
+
+          span {
+            color: @textColor;
+          }
+        }
       }
 
       img {
@@ -122,7 +211,33 @@ body {
         margin: 3em auto;
       }
 
+      table {
+        margin: 1em 0;
+        width: 100%;
+
+        &.two-col-definition {
+          th:nth-child(1) {
+            width: 40%;
+          }
+        }
+
+        th {
+          font-style: italic;
+          padding: .5em;
+        }
+
+        td {
+          border: 1px solid @tableBorderColor;
+          padding: .5em 1em;
+        }
+      }
+
       &.home {
+        background: none;
+        box-shadow: none;
+        padding: 0px;
+        margin-bottom: 5em;
+
         &:after, &:before {
           content:"";
           display:table;
@@ -138,6 +253,7 @@ body {
 
           h2 {
             font-size: 1.8em;
+            color: @mainColor;
           }
 
           ul {
@@ -147,6 +263,8 @@ body {
               border-left: 5px solid @postBackgroundColor;
               padding: .5em;
               padding-left: 1.6em;
+              list-style-type: none;
+              margin-left: 0px;
 
               &:hover {
                 border-left: 5px solid @mainColor;
@@ -219,4 +337,13 @@ body {
   }
 }
 
+body.scrolltop-more-than-330 {
+  article nav {
+    position: absolute;
+    left: 0px;
+    //top: 1em;
+  }
+}
+
 @import "swagger.less";
+@import "screen-size.less";
