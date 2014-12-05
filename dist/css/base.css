@@ -25,14 +25,14 @@ body h3 {
 }
 body code {
   background: #505153;
-  color: #ffffff;
+  color: white;
   padding: .2em .5em;
   border-radius: 5px;
   font-family: monospace;
 }
 body pre {
   background: #505153;
-  color: #ffffff;
+  color: white;
   padding: .5em 1em;
   border-radius: 5px;
   font-family: monospace;
@@ -51,7 +51,7 @@ body .web-container {
   position: relative;
 }
 body header {
-  background: #ffffff;
+  background: white;
   height: 6.5em;
   border-bottom: 1px solid #cfd9ce;
 }
@@ -138,7 +138,7 @@ body article section {
 body article section h2 {
   font-size: 2em;
   margin: 2em 0;
-  color: #000000;
+  color: black;
 }
 body article section h2:first-child {
   margin-top: 0px;
@@ -147,7 +147,7 @@ body article section h3 {
   font-size: 1.5em;
   margin-top: 1.2em;
   margin-bottom: 1em;
-  color: #000000;
+  color: black;
 }
 body article section h4 {
   font-size: 1.2em;
@@ -268,7 +268,7 @@ body footer .about .web-container .col p a {
   margin: 1.5em 0;
 }
 body footer .copyright {
-  background: #000000;
+  background: black;
   padding: 2em;
   color: #8c9195;
 }
