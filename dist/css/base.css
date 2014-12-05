@@ -304,6 +304,9 @@ body.scrolltop-more-than-330 article nav {
 .swagger-section .swagger-ui-wrap #resources_container pre code {
   color: white;
 }
+.swagger-section .swagger-ui-wrap #resources_container pre .string {
+  color: #81D4FA;
+}
 .swagger-section .swagger-ui-wrap #resources_container ul#resources .model-signature .description {
   max-height: none;
 }
