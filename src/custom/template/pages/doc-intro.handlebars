@@ -1,454 +1,646 @@
 <section class="web-container">
-  <article>
-    <header>
-      <h1>Introduction</h1>
-      <p>
-          intentOS offre aux développeurs une API de données REST leur permettant d’accéder et de contribuer au suivi des activités relatives à l’exploitation du patrimoine immobilier de ses clients.
-      </p>
-    </header>
-    <nav id="article-nav">
-      <ul>
-        <li class="title">Menu</li>
-        <li><a href="#introduction-pre-requis">Pré-requis</a></li>
-        <li><a href="#introduction-concepts">Concepts sous-jacents</a></li>
-        <li><a href="#introduction-style-api">Syle de l'API</a></li>
-        <li><a href="#introduction-activites">Activités</a></li>
-        <li><a href="#introduction-tutoriel">Tutoriel</a></li>
-      </ul>
-    </nav>
-    <section>
-      <h2 id="introduction-pre-requis">Pré-requis</h2>
-      <p>
-        L’utilisation de l’API nécessite d’être enregistré au programme développeur d’Intent Technologies. Cet enregistrement est activé sur demande pour toute organisation souscrite au service intentOS.
-      </p>
-      <p>
-        Il s’effectue sur simple demande auprès de Intent Technologies. <a href="mailto:contact@intent-technologies.eu">Contactez Intent Technologies</a> pour activer votre compte développeur.
-      </p>
+<article>
+<header>
+    <h1>Documentation de l'API</h1>
+    <p>
+        intentOS offre aux développeurs une API de données REST leur permettant d’accéder et de contribuer au suivi des activités relatives à l’exploitation du patrimoine immobilier de ses clients.
+    </p>
+</header>
+<nav id="article-nav">
+    <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#data-model">Modèle de données</a></li>
+        <li><a href="#tutoriel">Tutoriel</a></li>
+    </ul>
+</nav>
+<section>
+<h1 id="introduction">Introduction</h1>
+<h2 id="introduction-pre-requis">Pré-requis</h2>
+<p>
+    L’utilisation de l’API nécessite d’être enregistré au programme développeur d’Intent Technologies. Cet enregistrement est activé sur demande pour toute organisation souscrite au service intentOS.
+</p>
+<p>
+    Il s’effectue sur simple demande auprès de Intent Technologies. <a href="mailto:contact@intent-technologies.eu">Contactez Intent Technologies</a> pour activer votre compte développeur.
+</p>
+
+<h2 id="introduction-concepts">Concepts sous-jacents</h2>
+
+<h3>Patrimoine</h3>
+<p>
+    Le client commence par alimenter une base listant à la fois les composants de son patrimoine immobilier - les <b>sites</b>, leurs <b>parties</b> communes et privatives - et les divers <b>équipements</b> déployés en son sein.
+</p>
+
+<h3>Activités</h3>
+<p>
+    A chaque élément du patrimoine est associé un ensemble prédéfini d’activités que le système va observer, comme par exemple le suivi de la température intérieure d’un logement, de l’état de fonctionnement d’un équipement ou encore des visites d’entretien annuelles d’une chaudière individuelle.
+</p>
+
+<h3>Données d’activité</h3>
+<p>
+    Les applications connectées au système ; que ces applications soient des systèmes d’information, des interfaces utilisateur ou des capteurs déployés sur le terrain ; alimentent ces activités au fil de l’eau avec des données temporelles - des mesures, des alertes - caractérisant l’activité correspondante, comme par exemple un relevé de compteur, une alarme de panne ou encore un compte-rendu de visite.
+</p>
+
+<h3>États</h3>
+<p>
+    Au fur et à mesure de la publication de nouvelles données d’activité, le système analyse ces données puis, en fonction des critères d’analyse définis par le client - un seuil de température anormale par exemple, maintient à jour un état de l’élément du patrimoine auquel il est rattaché. L’état courant et les états antérieurs de cet élément sont en permanence consultables par le client.
+</p>
+
+<h3>Partages</h3>
+<p>
+    Les composants de la base patrimoniale, les activités et leurs données ainsi que les états sont la propriété du client. Ils ne sont par conséquent pas visibles des autres clients.
+</p>
+<p>
+    intentOS permet cependant à un client de partager avec un tiers, lui-même souscrit au service, tout ou partie des activités associées à son patrimoine. Ces activités deviennent alors visibles par ce tiers depuis les interfaces du service, comme d’ailleurs les caractéristiques du patrimoine sous-jacent. Les données publiées dans ces activités sont également accessibles et, si le client l’y a autorisé, le tiers peut lui même publier de nouvelles données dans ces activités.
+</p>
+<p>
+    Les états ne sont en revanche jamais partagés. Le système génère en effet pour chaque souscripteur un état privé des éléments du patrimoine à partir des données d’activités auxquelles il a accès.
+</p>
+
+<h2 id="introduction-fonctionnalites">Fonctionnalités de l’API</h2>
+<p>
+    Grâce à cette API, il est possible d’intégrer à vos applications les données et fonctionnalités suivantes :
+</p>
+
+<h4>Sites</h4>
+<ul>
+    <li><span>Lister les sites du patrimoine</span></li>
+    <li><span>Visualiser les caractéristiques d’un sites</span></li>
+    <li><span>Lister les activités d’un site</span></li>
+    <li><span>Visualiser l’état d’un site (états courant et états archivés)</span></li>
+    <li><span>Lister les parties d’un site</span></li>
+    <li><span>Lister les équipements d’un site</span></li>
+</ul>
+
+<h4>Parties</h4>
+<ul>
+    <li><span>Lister les parties du patrimoine</span></li>
+    <li><span>Visualiser les caractéristiques d’une partie</span></li>
+    <li><span>Lister les activités d’une partie</span></li>
+    <li><span>Visualiser l’état d’une partie (états courant et états archivés)</span></li>
+    <li><span>Lister les équipements d’une partie</span></li>
+</ul>
+
+<h4>Équipements</h4>
+<ul>
+    <li><span>Lister les équipements du patrimoine</span></li>
+    <li><span>Visualiser les caractéristiques d’un équipement</span></li>
+    <li><span>Lister les activités d’un équipement</span></li>
+    <li><span>Visualiser l’état d’un équipement (états courant et états archivés)</span></li>
+</ul>
+
+<h4>Activités</h4>
+<ul>
+    <li><span>Lister les données publiées dans une activité associée à un élément du patrimoine</span></li>
+    <li><span>Publier des données dans une activité associée à un élément du patrimoine</span></li>
+</ul>
 
 
+<h2 id="introduction-style-api">Style de l’API</h2>
+
+<h3>REST</h3>
+<p>
+    L’API intentOS respecte le modèle REST.
+</p>
+<p>
+    REST est un standard léger applicable à la mise en oeuvre de Services Web sans état avec lesquels il est possible d’interagir simplement à l’aide du seul protocole HTTP.
+</p>
+<p>
+    Chaque élément du modèle de données intentOS - chaque site, chaque partie, chaque équipement, chaque activité - est ainsi identifié par un chemin d’accès ; dans le tableau ci-dessous, les chemins d’accès sont exprimés par rapport à la racine de l’API :
+</p>
+
+<table class="two-col-definition">
+    <thead>
+    <tr>
+        <th>Chemin d'accès</th>
+        <th>Eléments identifiés</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><b>/sites</b></td>
+        <td>Liste des sites du client et des sites pour lesquels des activités sont partagées avec le client.<br/>
+            Chaque acteur du bâtiment (bailleur, prestataire...) utilisant la plateforme doit pouvoir identifier facilement
+            un site. A cet effet, l'identifiant du site est obtenu en concaténant le nom du bailleur (au sein de la plateforme)
+            et le code site dans le référentiel bailleur.
+        </td>
+    </tr>
+    <tr>
+        <td><b>/sites/{ID site}</b></td>
+        <td>Site {ID site}<br/>
+            Exemple : “/sites/SITE-BAILLEUR-7104043443”<br/>
+        </td>
+    </tr>
+    <tr>
+        <td><b>/sites/{ID site}/parts</b></td>
+        <td>Parties rattachées au site {ID site}<br/>Exemple : “/sites/SITE-BAILLEUR-7104043443/parts”</td>
+    </tr>
+    <tr>
+        <td><b>/sites/{ID site}/equip</b></td>
+        <td>Equipements rattachés au site {ID site}<br/>Exemple : “/sites/SITE-BAILLEUR-7104043443/equip”</td>
+    </tr>
+    <tr>
+        <td><b>/sites/{ID site}/activities</b></td>
+        <td>Activités rattachées au site {ID site}<br/>Exemple : “/sites/SITE-BAILLEUR-7104043443/activities”</td>
+    </tr>
+    <tr>
+        <td><b>/sites/{ID site}/activities/{clé activité}/{type de donnée}</b></td>
+        <td>Les données de l’activité {clé activité} et de type {type de donnée} du site {ID site}<br/>
+            Exemple : “/sites/SITE-BAILLEUR-7104043443/activities/OutsideTemp/snapshot”</td>
+    </tr>
+    <tr>
+        <td><b>/parts</b></td>
+        <td>Liste des parties du client et des parties pour lesquels des activités sont partagées avec le client.<br/>
+            Comme pour les sites, chaque acteur du bâtiment (bailleur, prestataire...) utilisant la plateforme doit pouvoir
+            identifier facilement une partie. A cet effet, l'identifiant de la partie est obtenu en concaténant le nom du
+            bailleur (au sein de la plateforme) et le code logement du référentiel bailleur.
+        </td>
+    </tr>
+    <tr>
+        <td><b>/parts/{ID partie}</b></td>
+        <td>Partie {ID partie}<br/>Exemple : “/parts/PART-BAILLEUR-7110030883”</td>
+    </tr>
+    <tr>
+        <td><b>/parts/{ID partie}/equip</b></td>
+        <td>Equipements rattachés à la partie {ID partie}<br/>Exemple : “/parts/PART-BAILLEUR-7110030883/equip”</td>
+    </tr>
+    <tr>
+        <td><b>/parts/{ID partie}/activities</b></td>
+        <td>Activités rattachées à la partie {ID partie}<br/>Exemple : “/parts/PART-BAILLEUR-7110030883/activities”</td>
+    </tr>
+    <tr>
+        <td><b>/parts/{ID partie}/activities/{clé activité}/{type de donnée}</b></td>
+        <td>Les données de l’activité {clé activité} et de type {type de donnée} de la partie {ID partie}<br/>
+            Exemple : “/parts/PART-BAILLEUR-7110030883/activities/AirTemp/snapshot”</td>
+    </tr>
+    <tr>
+        <td><b>/equip</b></td>
+        <td>Liste des équipements du client et des équipements pour lesquels des activités sont partagées avec le client.<br/>
+            Comme pour les sites et les parties, chaque acteur du bâtiment (bailleur, prestataire...) utilisant la plateforme doit pouvoir
+            identifier facilement un équipement. A cet effet, l'identifiant de l'équipement est obtenu en concaténant le nom du
+            de l'entité propriétaire de l'équipement (au sein de la plateforme) et le code d'équipement provenant du référentiel 
+            du propriétaire.
+        </td>
+    </tr>
+    <tr>
+        <td><b>/equip/{ID équipement}</b></td>
+        <td>Equipement {ID équipement}<br/>Exemple : “/equip/LIFT-OWNER-TK789”</td>
+    </tr>
+    <tr>
+        <td><b>/equip/{ID équipement}/activities</b></td>
+        <td>Activités rattachées à l’équipement {ID équipement}<br/>Exemple : “/equip/LIFT-OWNER-TK789/activities”</td>
+    </tr>
+    <tr>
+        <td><b>/equip/{ID équipement}/activities/{clé activité}/{type de donnée}</b></td>
+        <td>Les données de l’activité {clé activité} et de type {type de donnée} de l’équipement {ID équipement}<br/>
+            Exemple : “/equip/LIFT-OWNER-TK789/activities/intervention/tickets”</td>
+    </tr>
+    <tr>
+        <td><b>/activities</b></td>
+        <td>Liste des activités des éléments du patrimoine du client et des activités partagées avec le client.</td>
+    </tr>
+    <tr>
+        <td><b>/activities/{clé activité}</b></td>
+        <td>Données les activités identifiées par la clé {clé activité}</td>
+    </tr>
+    </tbody>
+</table>
+
+<p>
+    Le verbe HTTP utilisé pour accéder à l’URL indique la fonctionnalité de l’API déclenchée sur l’élément correspondant :
+</p>
+
+<table class="two-col-definition">
+    <thead>
+    <tr>
+        <th>Verbe HTTP</th>
+        <th>Fonctionnalité</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><b>GET</b></td>
+        <td>Télécharger une représentation de l’élément</td>
+    </tr>
+    <tr>
+        <td><b>PUT</b></td>
+        <td>Mettre à jour l’élément</td>
+    </tr>
+    <tr>
+        <td><b>POST</b></td>
+        <td>Ajouter l'élément</td>
+    </tr>
+    <tr>
+        <td><b>DELETE</b></td>
+        <td>Supprimer l'élément</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Représentation des éléments</h3>
+<p>
+    Les éléments sont représentés par l’API sous la forme de documents structurés au format JSON.
+</p>
+
+<h3>Chiffrement.</h3>
+<p>
+    L’API intentOS impose l’utilisation de HTTPS pour accéder aux ressources de l’API. De cette manière, l’ensemble des documents échangés entre vos applications et l’API est chiffré.
+</p>
+
+<h3>Autorisations</h3>
+<p>
+    intentOS s’appuie sur OAuth2 pour gérer les permissions d’accès aux API. Le modèle OAuth régit de façon standardisée la négociation d’une autorisation d’accès accordée par un propriétaire de ressources (un tiers souscrit au service) à une application cliente (votre application) accédant à ses ressources via une API (ici l’API intentOS).
+</p>
+
+<h3>Codes de retours de l'API</h3>
+<p>
+    L'API utilise les codes de retour HTTP classiques.
+</p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Code</th>
+        <th>Signification</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><b>200</b></td>
+        <td>Requête traitée avec succès. Ce code retour est renvoyé quelque soit le type de requête utilisé (GET, PUT, POST, DELETE) </td>
+    </tr>
+    <tr>
+        <td><b>400</b></td>
+        <td>La syntaxe de la requête est erronée. Un paramètre obligatoire est manquant, un paramètre ne respecte pas le schéma attendu.</td>
+    </tr>
+    <tr>
+        <td><b>401</b></td>
+        <td>Une authentification est nécessaire pour accéder à la ressource.</td>
+    </tr>
+    <tr>
+        <td><b>403</b></td>
+        <td>Accès interdit. Vous êtes bien authentifié, mais vous n'avez pas les droits nécessaires à l'exécution de la requête.</td>
+    </tr>
+    <tr>
+        <td><b>404</b></td>
+        <td>Ressource non trouvée. Vous essayez d'accéder à une ressource inexistante. Soit la route utilisée n'existe pas,
+            soit vous essayez d'accéder à un élément du patrimoine qui n'existe pas ou qui ne vous est pas partagé.</td>
+    </tr>
+    </tbody>
+</table>
+
+<h1 id="data-model">Modèle de données</h1>
+
+<h2 id="data-model-activites">Activités</h2>
+<p>
+    Le système définit un certain nombre d’activités.
+</p>
+<p>
+    Le tableau présenté ci-après indique les différents types d’activités gérés par le système.<br/>
+    Sont précisés pour chaque type :
+</p>
+<ul>
+    <li><span>la clé d’activité, à spécifier dans les URL pour sélectionner la ou les activités correspondantes sur un élément de la base patrimoniale ;</span></li>
+    <li><span>la nature des activités en question ;</span></li>
+    <li><span>l’unité des données qu’il est possible de publier dans les activités de ce type ;</span></li>
+    <li><span>les éléments pour lesquels le système crée une activité de ce type.</span></li>
+</ul>
+
+<table>
+    <thead>
+    <tr>
+        <th>Clé d’activité</th>
+        <th>Nature</th>
+        <th>Unité associée</th>
+        <th>Eléments du patrimoine</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>OutsideAirTemp</td>
+        <td>Suivi de la température de l’air extérieur</td>
+        <td>°C</td>
+        <td>sites</td>
+    </tr>
+    <tr>
+        <td>OutsideAirHygro</td>
+        <td>Suivi de l’hygrométrie de l’air extérieur</td>
+        <td>%</td>
+        <td>sites</td>
+    </tr>
+    <tr>
+        <td>OutsideAirPressure</td>
+        <td>Pression de l’air extérieur</td>
+        <td>Pa</td>
+        <td>sites</td>
+    </tr>
+    <tr>
+        <td>WindSpeed</td>
+        <td>Suivi de la vitesse du vent</td>
+        <td>km/h</td>
+        <td>sites</td>
+    </tr>
+    <tr>
+        <td>WindDirection</td>
+        <td>Suivi de la direction du vent</td>
+        <td></td>
+        <td>sites</td>
+    </tr>
+    <tr>
+        <td>AirTemp</td>
+        <td>Suivi de la température de l’air intérieur</td>
+        <td>°C</td>
+        <td>sites, parties</td>
+    </tr>
+    <tr>
+        <td>AirHygro</td>
+        <td>Suivi de l’hygrométrie de l’air intérieur</td>
+        <td>%</td>
+        <td>sites, parties</td>
+    </tr>
+    <tr>
+        <td>ElecCons</td>
+        <td>Suivi de la consommation électrique</td>
+        <td>kW/h</td>
+        <td>sites, parties</td>
+    </tr>
+    <tr>
+        <td>LightingElecCons</td>
+        <td>Suivi de la consommation éléctrique de l’éclairage</td>
+        <td>kW/h</td>
+        <td>sites, parties</td>
+    </tr>
+    <tr>
+        <td>HotWaterProdElecCons</td>
+        <td>Suivi de la consommation éléctrique de la production d’eau chaude sanitaire</td>
+        <td>kW/h</td>
+        <td>sites, parties</td>
+    </tr>
+    <tr>
+        <td>GasCons</td>
+        <td>Suivi de la consommation de gaz</td>
+        <td>m3</td>
+        <td>sites, parties</td>
+    </tr>
+    <tr>
+        <td>WaterCons</td>
+        <td>Suivi de la consommation globale d’eau</td>
+        <td>m3</td>
+        <td>sites, parties</td>
+    </tr>
+    <tr>
+        <td>ColdWaterCons</td>
+        <td>Suivi de la consommation d’eau froide</td>
+        <td>m3</td>
+        <td>parties</td>
+    </tr>
+    <tr>
+        <td>HotWaterCons</td>
+        <td>Suivi de la consommation d’eau chaude sanitaire</td>
+        <td>m3</td>
+        <td>parties</td>
+    </tr>
+    <tr>
+        <td>BoilerInboundTemp</td>
+        <td>Suivi de la température d’entrée d’une chaufferie</td>
+        <td>°C</td>
+        <td>sites</td>
+    </tr>
+    <tr>
+        <td>BoilerOutboundTemp</td>
+        <td>Suivi de la température de sortie d’une chaufferie</td>
+        <td>°C</td>
+        <td>sites</td>
+    </tr>
+    <tr>
+        <td>Intervention</td>
+        <td>Suivi des interventions multi-services</td>
+        <td>N/A</td>
+        <td>sites, parties, equipements</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Données d’activités</h2>
+<p>Le système autorise la publication de différents types de données d’activité :</p>
+<ul>
+    <li>alert</li>
+    <li>snapshot</li>
+    <li>delta</li>
+    <li>average</li>
+    <li>ticket</li>
+</ul>
+<h3>alert</h3>
+Le type de donnée alert désigne toute alerte relative à l’activité observée ; par exemple une température anormalement élevée.
+Le format d'une donnée d'alerte est :
+<table>
+    <thead>
+    <tr>
+        <th>Paramètre</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td>code permettant de déterminer la nature de l'alerte</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>status de l'alerte : LOW/HIGH/CLOSED</td>
+    </tr>
+    <tr>
+        <td>timestamp</td>
+        <td>marqueur temporel de l'alerte</td>
+    </tr>
+    <tr>
+        <td>infos</td>
+        <td>Objet contenant des information supplémentaires, dépendant du type d'alerte</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>snapshot</h3>
+Le type de donnée snapshot désigne une mesure instantanée. Par exemple, un index de compteur de consommation électrique, ou la température intérieure d'un logement.
+Le format de donnée snapshot est :
+<table>
+    <thead>
+    <tr>
+        <th>Paramètre</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>value</td>
+        <td>valeur exprimée dans l’unité associée au type de l’activité dans lequel la donnée est publiée</td>
+    </tr>
+    <tr>
+        <td>timestamp</td>
+        <td>marqueur temporel de prise de l’instantané</td>
+    </tr>
+    <tr>
+        <td>trustlevel</td>
+        <td>niveau de confiance attribué à l’instantané (ex: un relevé manuel vs un relevé automatique). Valeur parmi: SENSOR, MANUAL, TRUSTED_SENSOR, TRUSTED_MANUAL</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>delta</h3>
+Le type de donnée delta désigne un delta entre deux mesures ; pour exprimer par exemple une consommation électrique journalière.
+Le format de donnée delta est :
+<table>
+    <thead>
+    <tr>
+        <th>Paramètre</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>value</td>
+        <td>valeur exprimée dans l’unité associée au type de l’activité dans lequel la donnée est publiée</td>
+    </tr>
+    <tr>
+        <td>timestamp</td>
+        <td>marqueur temporel à partir duquel le delta est exprimé</td>
+    </tr>
+    <tr>
+        <td>duration</td>
+        <td>durée en secondes durant laquelle le delta est exprimé. Les constantes HOUR, DAY, WEEK, MONTH, YEAR sont également acceptées</td>
+    </tr>
+    </tbody>
+</table>
+<h3>average</h3>
+Le type de donnée average désigne la moyenne des données de l’activité sur une période ; par exemple la température moyenne la nuit.
+Le format de donnée average est :
+<table>
+    <thead>
+    <tr>
+        <th>Paramètre</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>value</td>
+        <td>valeur exprimée dans l’unité associée au type de l’activité dans lequel la donnée est publiée</td>
+    </tr>
+    <tr>
+        <td>timestamp</td>
+        <td>marqueur temporel à partir duquel la moyenne est exprimée</td>
+    </tr>
+    <tr>
+        <td>duration</td>
+        <td>durée en secondes durant laquelle la moyenne est exprimée. Les constantes HOUR, DAY, WEEK, MONTH, YEAR sont également acceptées</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>ticket</h3>
+Le type de données ticket désigne des tickets d'intervention multi-techniques. Ce type de données est uniquement supporté par l’activité ‘intervention’.
+Le format de donnée ticket est :
+<table>
+    <thead>
+    <tr>
+        <th>Paramètre</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>code</td>
+        <td>Code unique d'identification de l'intervention chez le prestataire.</td>
+    </tr>
+    <tr>
+        <td>state</td>
+        <td>état de l'intervention parmi : <br/>
+            - <b>Opened</b> : demande d'intervention reçue<br/>
+            - <b>Planned</b> : intervention plannifiée<br/>
+            - <b>Canceled</b> : intervention annulée<br/>
+            - <b>Missing</b> : locataire absent<br/>
+            - <b>TemporaryRepair</b> : réparation temporaire<br/>
+            - <b>Waiting : en attente de pièce/pièce en commande</b>
+            - <b>ReScheduled</b> : intervention replanifiée<br/>
+            - <b>FormalNotice</b> : mise en demeure/envoi de Lettre recommandée avec AR<br/>
+            - <b>Closed</b> : intervention terminée<br/>
+        </td>
+    </tr>
+    <tr>
+        <td>category</td>
+        <td>corps de métier parmi :<br/>
+            - <b>Plumbing</b> : robinetterie/plomberie<br/>
+            - <b>IndividualHeating</b> : chaudière individuelle<br/>
+            - <b>IndividualHotWater</b> : production individuelle d'ECS<br/>
+            - <b>Heating</b> : chauffage collectif<br/>
+            - <b>HotWater</b> : ECS collective<br/>
+            - <b>Electricity</b> : électricité<br/>
+            - <b>Ventilation</b> : VMC<br/>
+            - <b>Intercom</b> : interphonie<br/>
+            - <b>Sanitation</b> : assainissement<br/>
+            - <b>Carpentery</b> : menuiserie<br/>
+            - <b>Painting</b> : peinture<br/>
+            - <b>Television</b> : télévision<br/>
+            - <b>ParkingDoor</b> : porte de parking<br/>
+            - <b>Locksmithing</b> : serrurerie<br/>
+            - <b>SmokeRemoval</b> : désenfumage<br/>
+            - <b>Security</b> : sécurité<br/>
+        </td>
+    </tr>
+    <tr>
+        <td>callDate</td>
+        <td>date et heure d’appel (format ISO_8601)</td>
+    </tr>
+    <tr>
+        <td>startDate</td>
+        <td>date et heure de début d’intervention (format ISO_8601)</td>
+    </tr>
+    <tr>
+        <td>endDate</td>
+        <td>date et heure de fin d’intervention (format ISO_8601)</td>
+    </tr>
+    <tr>
+        <td>technicianName</td>
+        <td>nom du technicien</td>
+    </tr>
+    <tr>
+        <td>customerBasedDate</td>
+        <td>Booléen indiquant si la date d’intervention est imposée par le client</td>
+    </tr>
+    <tr>
+        <td>nature</td>
+        <td>nature de l'intervention :<br/>
+            - <b>Operation</b> : intervention curative<br/>
+            - <b>Maintenance</b> : intervention préventive<br/>
+            - <b>Changeover</b> : Entrée/Sortie de locataire
+        </td>
+    </tr>
+    <tr>
+        <td>comment</td>
+        <td>commentaire textuel</td>
+    </tr>
+    </tbody>
+</table>
 
 
-      <h2 id="introduction-concepts">Concepts sous-jacents</h2>
+<h1 id="tutoriel">Tutoriel</h1>
 
-      <h3>Patrimoine</h3>
-      <p>
-          Le client commence par alimenter une base listant à la fois les composants de son patrimoine immobilier - les <b>sites</b>, leurs <b>parties</b> communes et privatives - et les divers <b>équipements</b> déployés en son sein.
-      </p>
+<h2>Pré-requis : identifiants d’authentification</h2>
+<p>
+    <a href="mailto:contact@intent-technologies.eu">Contactez Intent Technologies</a> pour activer votre compte développeur et obtenir votre <code>CLIENT_ID</code> et <code>CLIENT_SECRET</code>.
+</p>
 
-      <h3>Activités</h3>
-      <p>
-        A chaque élément du patrimoine est associé un ensemble prédéfini d’activités que le système va observer, comme par exemple le suivi de la température intérieure d’un logement, de l’état de fonctionnement d’un équipement ou encore des visites d’entretien annuel d’une chaudière individuelle.
-      </p>
-
-      <h3>Données d’activité</h3>
-      <p>
-        Les applications connectées au système ; que ces applications soient des systèmes d’information, des interfaces utilisateur ou des capteurs déployés sur le terrain ; alimentent ces activités au fil de l’eau avec des données temporelles - des mesures, des alertes - caractérisant l’activité correspondante, comme par exemple un relevé de compteur, une alarme de panne ou encore un compte-rendu de visite.
-      </p>
-
-      <h3>États</h3>
-      <p>
-        Au fur et à mesure de la publication de nouvelles données d’activité, le système analyse ces données puis, en fonction des critères d’analyse définis par le client - un seuil de température anormale par exemple, maintient à jour un état de l’élément du patrimoine auquel il est rattaché. L’état courant et les états antérieurs de cet élément sont en permanence consultables par le client.
-      </p>
-
-      <h3>Partages</h3>
-      <p>
-        Les composants de la base patrimoniale, les activités et leurs données ainsi que les états sont la propriétés du client. Ils ne sont par conséquent pas visibles des autres clients.
-      </p>
-      <p>
-        intentOS permet cependant à un client de partager avec un tiers, lui-même souscrit au service, tout ou partie des activités associés à son patrimoine. Ces activités deviennent alors visibles par ce tiers depuis les interfaces du service, comme d’ailleurs les caractéristiques du patrimoine sous-jacent. Les données publiées dans ces activités sont également accessibles et, si le client l’y a autorisé, le tiers peut lui même publier de nouvelles données dans ces activités.
-      </p>
-      <p>
-        Les états ne sont en revanche jamais partagés. Le système génère en effet pour chaque souscripteur un état privé des éléments du patrimoine à partir des données d’activités auxquelles il a accès.
-      </p>
-
-      <h2>Fonctionnalités de l’API</h2>
-      <p>
-        Grâce à cette API, il est possible d’intégrer à vos applications les données et fonctionnalités suivantes :
-      </p>
-
-      <h4>Sites</h4>
-      <ul>
-        <li><span>Lister les sites du patrimoine</span></li>
-        <li><span>Visualiser les caractéristiques d’un sites</span></li>
-        <li><span>Lister les activités d’un site</span></li>
-        <li><span>Visualiser l’état d’un site (états courant et états archivés)</span></li>
-        <li><span>Lister les parties d’un site</span></li>
-        <li><span>Lister les équipements d’un site</span></li>
-      </ul>
-
-      <h4>Parties</h4>
-      <ul>
-        <li><span>Lister les parties du patrimoine</span></li>
-        <li><span>Visualiser les caractéristiques d’une partie</span></li>
-        <li><span>Lister les activités d’une partie</span></li>
-        <li><span>Visualiser l’état d’une partie (états courant et états archivés)</span></li>
-        <li><span>Lister les équipements d’une partie</span></li>
-      </ul>
-
-      <h4>Équipements</h4>
-      <ul>
-        <li><span>Lister les équipements du patrimoine</span></li>
-        <li><span>Visualiser les caractéristiques d’un équipement</span></li>
-        <li><span>Lister les activités d’un équipement</span></li>
-        <li><span>Visualiser l’état d’un équipement (états courant et états archivés)</span></li>
-      </ul>
-
-      <h4>Activités</h4>
-      <ul>
-        <li><span>Lister les données publiées dans une activité</span></li>
-        <li><span>Publier des données dans une activité</span></li>
-      </ul>
-
-
-
-
-      <h2 id="introduction-style-api">Style de l’API</h2>
-
-      <h3>REST</h3>
-      <p>
-        L’API intentOS respecte le modèle REST.
-      </p>
-      <p>
-        REST est un standard léger applicable à la mise en oeuvre de Services Web sans état avec lesquels il est possible d’interagir simplement à l’aide du seul protocole HTTP.
-      </p>
-      <p>
-        Chaque élément du modèle de données intentOS - chaque site, chaque partie, chaque équipement, chaque activité - est ainsi identifié par un chemin d’accès ; dans le tableau ci-dessous, les chemins d’accès sont exprimés par rapport à la racine de l’API :
-      </p>
-
-      <table class="two-col-definition">
-        <thead>
-          <tr>
-            <th>Chemin d'accès</th>
-            <th>Eléments identifiés</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><b>/sites</b></td>
-            <td>Liste des sites du client et des sites pour lesquels des activités sont partagées avec le client</td>
-          </tr>
-          <tr>
-            <td><b>/sites/{ID site}</b></td>
-            <td>Site {ID site}<br/>Exemple : “/sites/Rosiers-B”</td>
-          </tr>
-          <tr>
-            <td><b>/sites/{ID site}/parts</b></td>
-            <td>Parties rattachées au site {ID site}<br/>Exemple : “/sites/Rosiers-B/parts”</td>
-          </tr>
-          <tr>
-            <td><b>/sites/{ID site}/equip</b></td>
-            <td>Equipements rattachés au site {ID site}<br/>Exemple : “/sites/Rosiers-B/equip”</td>
-          </tr>
-          <tr>
-            <td><b>/sites/{ID site}/activities</b></td>
-            <td>Activités rattachées au site {ID site}<br/>Exemple : “/sites/Rosiers-B/activities”</td>
-          </tr>
-          <tr>
-            <td><b>/sites/{ID site}/activities/{clé activité}</b></td>
-            <td>Données de l’activité {clé activité} du site {ID site}<br/>Exemple : “/sites/Rosiers-B/activities/OutsideTemp”</td>
-          </tr>
-          <tr>
-            <td><b>/parts</b></td>
-            <td>Liste des parties du client et des parties pour lesquels des activités sont partagées avec le client</td>
-          </tr>
-          <tr>
-            <td><b>/parts/{ID partie}</b></td>
-            <td>Partie {ID partie}<br/>Exemple : “/parts/Logement-RB212”</td>
-          </tr>
-          <tr>
-            <td><b>/parts/{ID partie}/equip</b></td>
-            <td>Equipements rattachés à la partie {ID partie}<br/>Exemple : “/parts/Logement-RB212/equip”</td>
-          </tr>
-          <tr>
-            <td><b>/parts/{ID partie}/activities</b></td>
-            <td>Activités rattachées à la partie {ID partie}<br/>Exemple : “/parts/Logement-RB212/activities”</td>
-          </tr>
-          <tr>
-            <td><b>/parts/{ID partie}/activities/{clé activité}</b></td>
-            <td>Données de l’activité {clé activité} de la partie {ID partie}<br/>Exemple : “/parts/Logement-RB212/activities/AirTemp”</td>
-          </tr>
-          <tr>
-            <td><b>/equip</b></td>
-            <td>Liste des équipements du client et des équipements pour lesquels des activités sont partagées avec le client</td>
-          </tr>
-          <tr>
-            <td><b>/equip/{ID équipement}</b></td>
-            <td>Equipement {ID équipement}<br/>Exemple : “/equip/Lift-TK789”</td>
-          </tr>
-          <tr>
-            <td><b>/equip/{ID équipement}/activities</b></td>
-            <td>Activités rattachées à l’équipement {ID équipement}<br/>Exemple : “/equip/Lift-TK789/activities”</td>
-          </tr>
-          <tr>
-            <td><b>/equip/{ID équipement}/activities/{clé activité}</b></td>
-            <td>Données de l’activités {clé activité} de l’équipement {ID équipement}<br/>Exemple : “/equip/Lift-TK789/activities/State”</td>
-          </tr>
-          <tr>
-            <td><b>/activities</b></td>
-            <td>Liste des activités des éléments du patrimoine du client et des activités partagées avec le client.</td>
-          </tr>
-          <tr>
-            <td><b>/activities/{clé activité}</b></td>
-            <td>Données les activités identifiées par la clé {clé activité}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>
-        Le verbe HTTP utilisé pour accéder à l’URL indique la fonctionnalité de l’API déclenchée sur l’élément correspondant :
-      </p>
-
-      <table class="two-col-definition">
-        <thead>
-        <tr>
-          <th>Verbe HTTP</th>
-          <th>Fonctionnalité</th>
-        </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><b>GET</b></td>
-            <td>Télécharger une représentation de l’élément</td>
-          </tr>
-          <tr>
-            <td><b>PUT</b></td>
-            <td>Mettre à jour l’élément</td>
-          </tr>
-          <tr>
-            <td><b>POST</b></td>
-            <td>Ajouter l'élément</td>
-          </tr>
-          <tr>
-            <td><b>DELETE</b></td>
-            <td>Supprimer l'élément</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Représentation des éléments</h3>
-      <p>
-        Les éléments sont représentés par l’API sous la forme de documents structurés au format JSON.
-      </p>
-
-      <h3>Chiffrement.</h3>
-      <p>
-        L’API intentOS impose l’utilisation de HTTPS pour accéder aux ressources de l’API. De cette manière, l’ensemble des documents échangés entre vos applications et l’API sont chiffrées.
-      </p>
-
-      <h3>Autorisations</h3>
-      <p>
-        intentOS s’appuie sur OAuth2 pour gérer les permissions d’accès aux API. Le modèle OAuth régit de façon standardisée la négociation d’une autorisation d’accès accordée par un propriétaire de ressources (un tiers souscrit au service) à une application cliente (votre application) accédant à ses ressources via une API (ici l’API intentOS).
-      </p>
-
-
-
-
-      <h2 id="introduction-activites">Activités</h2>
-      <h3>Types d’activités observables par le système</h3>
-      <p>
-        Le système définit un certain nombre d’activités.
-      </p>
-      <p>
-        Le tableau présenté ci-après indique les différents types d’activités gérées par le système.<br/>
-        Sont précisés pour chaque type :
-      </p>
-      <ul>
-        <li><span>la clé d’activité, à spécifier dans les URL pour sélectionner la ou les activités correspondantes sur un élément de la base patrimoniale ;</span></li>
-        <li><span>la nature des activités en question ;</span></li>
-        <li><span>l’unité des données qu’il est possible de publier dans les activités de ce type ;</span></li>
-        <li><span>les éléments pour lesquels le système crée une activité de ce type.</span></li>
-      </ul>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Clé d’activité</th>
-            <th>Nature</th>
-            <th>Unité associée</th>
-            <th>Eléments du patrimoine</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>OutsideAirTemp</td>
-            <td>Suivi de la température de l’air extérieur</td>
-            <td>°C</td>
-            <td>sites</td>
-          </tr>
-          <tr>
-            <td>OutsideAirHygro</td>
-            <td>Suivi de l’hygrométrie de l’air extérieur</td>
-            <td>%</td>
-            <td>sites</td>
-          </tr>
-          <tr>
-            <td>OutsideAirPressure</td>
-            <td>Pression de l’air extérieur</td>
-            <td>Pa</td>
-            <td>sites</td>
-          </tr>
-          <tr>
-            <td>WindSpeed</td>
-            <td>Suivi de la vitesse du vent</td>
-            <td>km/h</td>
-            <td>sites</td>
-          </tr>
-          <tr>
-            <td>WindDirection</td>
-            <td>Suivi de la direction du vent</td>
-            <td></td>
-            <td>sites</td>
-          </tr>
-          <tr>
-            <td>AirTemp</td>
-            <td>Suivi de la température de l’air intérieur</td>
-            <td>°C</td>
-            <td>sites, parties</td>
-          </tr>
-          <tr>
-            <td>AirHygro</td>
-            <td>Suivi de l’hygrométrie de l’air intérieur</td>
-            <td>%</td>
-            <td>sites, parties</td>
-          </tr>
-          <tr>
-            <td>ElecCons</td>
-            <td>Suivi de la consommation électrique</td>
-            <td>kW/h</td>
-            <td>sites, parties</td>
-          </tr>
-          <tr>
-            <td>LightingElecCons</td>
-            <td>Suivi de la consommation éléctrique de l’éclairage</td>
-            <td>kW/h</td>
-            <td>sites, parties</td>
-          </tr>
-          <tr>
-            <td>HotWaterProdElecCons</td>
-            <td>Suivi de la consommation éléctrique de la production d’eau chaude sanitaire</td>
-            <td>kW/h</td>
-            <td>sites, parties</td>
-          </tr>
-          <tr>
-            <td>GasCons</td>
-            <td>Suivi de la consommation de gaz</td>
-            <td>m3</td>
-            <td>sites, parties</td>
-          </tr>
-          <tr>
-            <td>WaterCons</td>
-            <td>Suivi de la consommation globale d’eau</td>
-            <td>m3</td>
-            <td>sites, parties</td>
-          </tr>
-          <tr>
-            <td>ColdWaterCons</td>
-            <td>Suivi de la consommation d’eau froide</td>
-            <td>m3</td>
-            <td>parties</td>
-          </tr>
-          <tr>
-            <td>HotWaterCons</td>
-            <td>Suivi de la consommation d’eau chaude sanitaire</td>
-            <td>m3</td>
-            <td>parties</td>
-          </tr>
-          <tr>
-            <td>BoilerInboundTemp</td>
-            <td>Suivi de la température d’entrée d’une chaufferie</td>
-            <td>°C</td>
-            <td>sites</td>
-          </tr>
-          <tr>
-            <td>BoilerOutboundTemp</td>
-            <td>Suivi de la température de sortie d’une chaufferie</td>
-            <td>°C</td>
-            <td>sites</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Données d’activités</h3>
-      <p>Le système autorise la publication de différents types de données d’activité :</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Type de donnée</th>
-            <th>Nature de la donnée</th>
-            <th width="60%">Attributs</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>alert</td>
-            <td>
-              Alerte relative à l’activité observée ; par exemple une température anormalement élevée.
-            </td>
-            <td>
-              - type : code permettant de déterminer la nature de l’alerte<br/>
-              - status : statut de l’alerte (ouverte, fermée)<br/>
-              - infos : informations complémentaires<br/>
-              - timestamp : marqueur temporel d’occurrence du motif de l’alerte
-            </td>
-          </tr>
-          <tr>
-            <td>snapshot</td>
-            <td>
-              Valeur instantanée ; par exemple un index de compteur de consommation électrique.
-            </td>
-            <td>
-              - value : valeur exprimée dans l’unité associée au type de l’activité dans lequel la donnée est publiée ;<br/>
-              - timestamp : marqueur temporel de prise de l’instantané ;<br/>
-              - trustlevel : niveau de confiance attribué à l’instantané (ex: un relevé manuel vs un relevé automatique)
-            </td>
-          </tr>
-          <tr>
-            <td>delta</td>
-            <td>
-              Delta entre deux mesures ; pour exprimer par exemple une consommation électrique journalière.
-            </td>
-            <td>
-              - value : valeur exprimée dans l’unité associée au type de l’activité dans lequel la donnée est publiée ;<br/>
-              - timestamp : marqueur temporel à partir duquel le delta est exprimé<br/>
-              - duration : durée durant laquelle le delta est exprimé (heure, jour, mois, semaine, année)
-            </td>
-          </tr>
-          <tr>
-            <td>average</td>
-            <td>
-              Moyenne des données de l’activité sur une période ; par exemple la température moyenne la nuit.
-            </td>
-            <td>
-              - value : valeur exprimée dans la mesure autorisé par le type de l’activité dans lequel la donnée est publiée ;<br/>
-              - timestamp : marqueur temporel à partir duquel le delta est exprimé<br/>
-              - duration : durée durant laquelle le delta est exprimé (heure, jour, mois, semaine, année)
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-
-
-
-      <h2 id="introduction-tutoriel">Tutoriel</h2>
-
-      <h3>Pré-requis : récupération des identifiants d’authentification</h3>
-      <p>
-        <a href="mailto:contact@intent-technologies.eu">Contactez Intent Technologies</a> pour activer votre compte développeur et obtenir votre <code>CLIENT_ID</code> et <code>CLIENT_SECRET</code>.
-      </p>
-
-      <h3>Etape 1 : obtention d’un access_token</h3>
-      <p>
-        Une fois vos identifiants obtenus, vous devez obtenir un <code>access_token</code> afin d’autoriser les requêtes faites à l’API. Pour celà,  vous devez faire une requête sur l’URL :
-      </p>
+<h2>Etape 1 : obtention d’un access_token</h2>
+<p>
+    Une fois vos identifiants obtenus, vous devez obtenir un <code>access_token</code> afin d’autoriser les requêtes faites à l’API. Pour celà,  vous devez faire une requête sur l’URL :
+</p>
       <pre>
 curl
   https://oauthdemo.intent-technologies.eu/oauth/token
   -d "grant_type=client_credentials"
   -d "client_id={CLIENT_ID}" -d "client_secret={CLIENT_SECRET}"</pre>
-      <p>
-        En réponse, vous recevrez un <code>access_token</code> :
-      </p>
+<p>
+    En réponse, vous recevrez un <code>access_token</code> :
+</p>
       <pre>
 {
   "token_type":"bearer",
@@ -456,10 +648,11 @@ curl
   "expires_in":3600
 }</pre>
 
-      <h3>Etape 2 : appel à une route de l’API</h3>
-      <p>
-        L’exemple suivant décrit la publication d’un instantané dans une activité :
-      </p>
+<h2>Etape 2 : appel à une route de l’API</h2>
+<h3>Télérelève</h3>
+<p>
+    L’exemple suivant décrit la publication d’un instantané dans une activité de télérelève :
+</p>
 
       <pre>
 curl
@@ -476,15 +669,51 @@ curl
         "lat": "43.6019",
         "lng": "1.4498"
       },
-      "dataType": "snapshot"
-      "payload": {
-        "timestamp": 1409522400000,
-	      "value": 24
-      }
+    }
+    "dataType": "snapshot"
+    "payload": {
+      "timestamp": 1409522400000,
+	  "value": 24
     }
   }"
   https://apidemo.intent-technologies.eu/api/datahub/v1/activities/OutsideAirTemp</pre>
 
-    </section>
-  </article>
+<h3>Multi-services</h3>
+<p>
+    L’exemple suivant décrit la publication d’un ticket dans une activité d’intervention multi-services :
+</p>
+
+      <pre>
+curl
+    -X POST -H "Content-Type: application/json"
+    -H "Authorization: Bearer bc378d50dca644816b777afd26d21e7260bb8296"
+    -d "{
+      "address": {
+        "num": "1",
+        "way": "rue des pénitents blancs",
+        "city": "Toulouse",
+        "zip": "31000",
+        "country": "fr",
+        "pos": {
+          "lat": "43.6019",
+          "lng": "1.4498"
+        },
+      }
+      "dataType": "ticket"
+      "payload": {
+        "state": "CLOSED",
+        "category": "GAZ",
+        "callDate": "2014-01-01T06:00:00+01:00",
+        "startDate": "2014-01-06T011:00:00+01:00",
+        "endDate": "2014-01-06T012:00:00+01:00",
+        "technicianName": "JMARI",
+        "clientBasedDate": "FALSE",
+        "nature": "OPERATION",
+        "comment": "chgt flexible"
+      }
+    }"
+    https://apidemo.intent-technologies.eu/api/datahub/v1/activities/Intervention </pre>
+
+</section>
+</article>
 </section>
